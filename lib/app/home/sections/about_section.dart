@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kainato_portfolio/core/data/portfolio_data.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
-import 'package:kainato_portfolio/widgets/base/skill_chip.dart';
 
 class AboutSection extends StatelessWidget {
   final EdgeInsets sectionPadding;
@@ -35,15 +33,6 @@ class AboutSection extends StatelessWidget {
                     title: 'Produto',
                     text: 'Foco em problema, usuário e resultado de negócio',
                   ),
-                ],
-              ),
-              const SizedBox(height: 40),
-              Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: [
-                  for (final skill in PortfolioData.skills)
-                    SkillChip(skill: skill),
                 ],
               ),
             ],

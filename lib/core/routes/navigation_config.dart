@@ -104,6 +104,13 @@ class NavigationConfig {
       semanticLabel: 'Ir para a seção Sobre',
     ),
     NavigationItem(
+      id: 'habilidades',
+      label: 'Habilidades',
+      icon: Icons.code,
+      routePath: KpRoutes.home.path,
+      semanticLabel: 'Ir para a seção Habilidades',
+    ),
+    NavigationItem(
       id: 'projetos',
       label: 'Projetos',
       icon: Icons.work,

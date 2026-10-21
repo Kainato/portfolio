@@ -10,6 +10,10 @@ class HomeController {
   /// Utilizada para rolar para a seção correspondente quando necessário.
   final GlobalKey<State<StatefulWidget>> sobreKey = GlobalKey();
 
+  /// Chave global para a seção "Habilidades".
+  /// Utilizada para rolar para a seção correspondente quando necessário.
+  final GlobalKey<State<StatefulWidget>> habilidadesKey = GlobalKey();
+
   /// Chave global para a seção "Projetos".
   /// Utilizada para rolar para a seção correspondente quando necessário.
   final GlobalKey<State<StatefulWidget>> projetosKey = GlobalKey();
@@ -22,11 +26,13 @@ class HomeController {
   ///
   /// Os IDs válidos são:
   /// - 'sobre': Seção "Sobre mim"
+  /// - 'habilidades': Seção "Habilidades"
   /// - 'projetos': Seção "Projetos"
   /// - 'contato': Seção "Contato"
   void scrollToSection(String id) {
     final key = switch (id) {
       'sobre' => sobreKey,
+      'habilidades' => habilidadesKey,
       'projetos' => projetosKey,
       'contato' => contatoKey,
       _ => null,

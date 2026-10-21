@@ -11,6 +11,7 @@ import 'sections/contact_section.dart';
 import 'sections/hero_section.dart';
 import 'sections/process_section.dart';
 import 'sections/projects_section.dart';
+import 'sections/skills_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,6 +45,20 @@ class _HomePageState extends State<HomePage> {
           ).buildSliver(context),
           SliverToBoxAdapter(
             child: AboutSection(
+              sectionPadding: _controller.sectionPadding(context),
+            ),
+          ),
+          SliverToBoxAdapter(
+            key: _controller.habilidadesKey,
+            child: const SizedBox.shrink(),
+          ),
+          KpIntro(
+            title: 'HABILIDADES',
+            content:
+                'Tecnologias, linguagens, frameworks e ferramentas que domino e utilizo no dia a dia.',
+          ).buildSliver(context),
+          SliverToBoxAdapter(
+            child: SkillsSection(
               sectionPadding: _controller.sectionPadding(context),
             ),
           ),
