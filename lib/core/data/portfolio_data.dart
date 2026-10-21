@@ -4,6 +4,7 @@ import '../models/certificate.dart';
 import '../models/experience.dart';
 import '../models/portfolio_project.dart';
 import '../models/skill.dart';
+import '../models/skill_category.dart';
 
 /// Fonte central de dados usados pelas telas do projeto.
 ///
@@ -91,6 +92,110 @@ abstract final class PortfolioData {
       name: 'Figma',
       color: Color(0xFFF24E1E),
       url: 'https://www.figma.com',
+    ),
+  ];
+
+  static const List<SkillCategory> skillsCategories = [
+    SkillCategory(
+      name: 'Mobile & Frontend',
+      description: 'Desenvolvimento multiplataforma e interfaces modernas',
+      icon: Icons.phone_iphone_rounded,
+      skills: [
+        Skill(
+          name: 'Flutter',
+          color: Color(0xFF02569B),
+          url: 'https://flutter.dev',
+        ),
+        Skill(name: 'Dart', color: Color(0xFF0175C2), url: 'https://dart.dev'),
+        Skill(
+          name: 'Provider',
+          color: Color(0xFF13B9FD),
+          url: 'https://pub.dev/packages/provider',
+        ),
+        Skill(
+          name: 'MobX',
+          color: Color(0xFFFF9955),
+          url: 'https://pub.dev/packages/mobx',
+        ),
+        Skill(
+          name: 'GetX',
+          color: Color(0xFF8A2BE2),
+          url: 'https://pub.dev/packages/get',
+        ),
+      ],
+    ),
+    SkillCategory(
+      name: 'Backend & Dashboards',
+      description: 'Servidores, APIs e painéis administrativos',
+      icon: Icons.storage_rounded,
+      skills: [
+        Skill(
+          name: 'Laravel',
+          color: Color(0xFFFF2D20),
+          url: 'https://laravel.com',
+        ),
+        Skill(
+          name: 'Filament',
+          color: Color(0xFFE38A01),
+          url: 'https://filamentphp.com',
+        ),
+        Skill(
+          name: 'PHP',
+          color: Color(0xFF777BB4),
+          url: 'https://www.php.net',
+        ),
+        Skill(
+          name: 'REST API',
+          color: Color(0xFF6A1B9A),
+          url: 'https://restfulapi.net',
+        ),
+        Skill(
+          name: 'MySQL',
+          color: Color(0xFF00758F),
+          url: 'https://www.mysql.com',
+        ),
+      ],
+    ),
+    SkillCategory(
+      name: 'Dados & Cloud',
+      description: 'Armazenamento, autenticação e infraestrutura em nuvem',
+      icon: Icons.cloud_rounded,
+      skills: [
+        Skill(
+          name: 'Firebase',
+          color: Color(0xFFFFCA28),
+          onColor: Colors.black,
+          url: 'https://firebase.google.com',
+        ),
+        Skill(
+          name: 'Supabase',
+          color: Color(0xFF3ECF8E),
+          onColor: Colors.black,
+          url: 'https://supabase.com',
+        ),
+      ],
+    ),
+    SkillCategory(
+      name: 'Publicação & Ferramentas',
+      description: 'Versionamento, CI/CD e ferramentas de desenvolvimento',
+      icon: Icons.construction_rounded,
+      skills: [
+        Skill(
+          name: 'Git',
+          color: Color(0xFFF05032),
+          url: 'https://git-scm.com',
+        ),
+        Skill(
+          name: 'GitHub',
+          color: Color(0xFF333333),
+          url: 'https://github.com',
+        ),
+        Skill(
+          name: 'Figma',
+          color: Color(0xFFF24E1E),
+          url: 'https://www.figma.com',
+        ),
+      ],
     ),
   ];
 
