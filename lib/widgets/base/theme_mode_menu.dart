@@ -86,18 +86,21 @@ class ThemeModeMenu extends StatelessWidget {
           .map(
             (option) => PopupMenuItem<ThemeMode>(
               value: option,
-              child: Row(
-                children: [
-                  Icon(iconFor(option)),
-                  const SizedBox(width: 12),
-                  Text(labelFor(option)),
-                  const Spacer(),
-                  if (option == mode)
-                    Icon(
-                      Icons.check,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                ],
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Row(
+                  children: [
+                    Icon(iconFor(option)),
+                    const SizedBox(width: 12),
+                    Text(labelFor(option)),
+                    const Spacer(),
+                    if (option == mode)
+                      Icon(
+                        Icons.check,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                  ],
+                ),
               ),
             ),
           )
