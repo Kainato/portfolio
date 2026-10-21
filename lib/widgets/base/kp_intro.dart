@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/extension/context_extension.dart';
+import 'scroll_reveal.dart';
 
 class KpIntro extends StatelessWidget {
   final String title;
@@ -14,7 +15,7 @@ class KpIntro extends StatelessWidget {
   const KpIntro({super.key, required this.title, required this.content});
 
   SliverToBoxAdapter buildSliver(BuildContext context) {
-    return SliverToBoxAdapter(child: build(context));
+    return SliverToBoxAdapter(child: ScrollReveal(child: build(context)));
   }
 
   @override

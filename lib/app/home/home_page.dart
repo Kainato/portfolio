@@ -5,6 +5,7 @@ import '../../core/data/portfolio_data.dart';
 import '../../core/extension/context_extension.dart';
 import '../../core/routes/kp_routes.dart';
 import '../../widgets/base/kp_intro.dart';
+import '../../widgets/base/scroll_reveal.dart';
 import '../../widgets/layout/kp_scaffold.dart';
 import 'sections/about_section.dart';
 import 'sections/contact_section.dart';
@@ -31,8 +32,10 @@ class _HomePageState extends State<HomePage> {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: HeroSection(
-              onProjectsTap: () => _controller.scrollToSection('projetos'),
+            child: ScrollReveal(
+              child: HeroSection(
+                onProjectsTap: () => _controller.scrollToSection('projetos'),
+              ),
             ),
           ),
           SliverToBoxAdapter(
@@ -44,8 +47,10 @@ class _HomePageState extends State<HomePage> {
             content: PortfolioData.about,
           ).buildSliver(context),
           SliverToBoxAdapter(
-            child: AboutSection(
-              sectionPadding: _controller.sectionPadding(context),
+            child: ScrollReveal(
+              child: AboutSection(
+                sectionPadding: _controller.sectionPadding(context),
+              ),
             ),
           ),
           SliverToBoxAdapter(
@@ -58,8 +63,10 @@ class _HomePageState extends State<HomePage> {
                 'Tecnologias, linguagens, frameworks e ferramentas que domino e utilizo no dia a dia.',
           ).buildSliver(context),
           SliverToBoxAdapter(
-            child: SkillsSection(
-              sectionPadding: _controller.sectionPadding(context),
+            child: ScrollReveal(
+              child: SkillsSection(
+                sectionPadding: _controller.sectionPadding(context),
+              ),
             ),
           ),
           SliverToBoxAdapter(
@@ -72,8 +79,10 @@ class _HomePageState extends State<HomePage> {
                 'Cases apresentados pelo problema, processo, decisões e resultado — não apenas pelo código.',
           ).buildSliver(context),
           SliverToBoxAdapter(
-            child: ProjectsSection(
-              sectionPadding: _controller.sectionPadding(context),
+            child: ScrollReveal(
+              child: ProjectsSection(
+                sectionPadding: _controller.sectionPadding(context),
+              ),
             ),
           ),
           KpIntro(
@@ -82,20 +91,24 @@ class _HomePageState extends State<HomePage> {
                 'Minhas etapas de trabalho, da concepção com metodologias ágeis (Scrum/Kanban) até a entrega final.',
           ).buildSliver(context),
           SliverToBoxAdapter(
-            child: ProcessSection(
-              sectionPadding: _controller.sectionPadding(context),
+            child: ScrollReveal(
+              child: ProcessSection(
+                sectionPadding: _controller.sectionPadding(context),
+              ),
             ),
           ),
           SliverToBoxAdapter(
             key: _controller.contatoKey,
-            child: const ContactSection(),
+            child: const ScrollReveal(child: ContactSection()),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 70)),
           SliverToBoxAdapter(
-            child: Center(
-              child: Text(
-                '© 2026 ${PortfolioData.name} • Flutter Developer',
-                style: TextStyle(color: context.onSurfaceVariantColor),
+            child: ScrollReveal(
+              child: Center(
+                child: Text(
+                  '© 2026 ${PortfolioData.name} • Flutter Developer',
+                  style: TextStyle(color: context.onSurfaceVariantColor),
+                ),
               ),
             ),
           ),
