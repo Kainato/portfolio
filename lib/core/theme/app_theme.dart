@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 /// Paletas base do aplicativo. Os esquemas de cores são derivados pelo
 /// Material 3 a partir destas cores-semente.
+///
+/// Parâmetros: esta classe utilitária não recebe parâmetros.
 abstract final class AppTheme {
   static const Color blueSea = Color(0xFF00C0FE);
   static const Color darkNight = Color(0xFF0E162C);

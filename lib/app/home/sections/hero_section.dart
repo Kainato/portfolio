@@ -5,6 +5,10 @@ import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/kp_fallback_image.dart';
 
+/// Apresenta a introdução principal, o avatar e atalhos para projetos e GitHub.
+///
+/// Parâmetros:
+/// - `onProjectsTap`: ação opcional para navegar até os projetos.
 class HeroSection extends StatelessWidget {
   final VoidCallback? onProjectsTap;
 

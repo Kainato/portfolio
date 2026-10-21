@@ -9,6 +9,8 @@ import 'app/home/home_page.dart';
 /// Ele define o título do aplicativo, as rotas disponíveis, a rota inicial e o tema do aplicativo.
 /// A página inicial é definida como *[HomePage]*.
 ///
+/// Parâmetros: este widget não recebe parâmetros além da chave padrão do Flutter.
+///
 /// Variáveis:
 /// - **[title]:** O título do aplicativo.
 /// - **[routes]:** Um mapa de rotas disponíveis na aplicação. Definido por uma variável construída a partir do enum *[KpRoutes]*.

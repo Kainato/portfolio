@@ -12,6 +12,14 @@ import 'kp_routes.dart';
 /// Os itens são utilizados para construir a navegação do app, incluindo
 /// componentes como `AppBar` e `Drawer`.
 ///
+/// Parâmetros:
+/// - `id`: identificador usado para localizar a ação de navegação.
+/// - `label`: texto exibido no item.
+/// - `icon`: ícone associado ao item.
+/// - `routePath`: caminho opcional de uma rota interna.
+/// - `externalUrl`: endereço opcional de um destino externo.
+/// - `semanticLabel`: descrição da ação para tecnologias assistivas.
+///
 /// ***Nota:** Não instancie esta classe diretamente. Use [NavigationConfig]
 /// para acessar e gerenciar todos os itens de navegação da aplicação.*
 class NavigationItem {
@@ -84,6 +92,8 @@ class NavigationItem {
 /// Configuração centralizada de navegação para toda a aplicação.
 /// Ela define os itens de navegação principais exibidos no `AppBar` e `Drawer`,
 /// bem como os itens de rota disponíveis no aplicativo com auxílio da padronização das classes `NavigationItem` e `KpRoutes`.
+///
+/// Parâmetros: esta classe utilitária não recebe parâmetros.
 ///
 /// ### Funcionalidades
 /// - `mainItems`: Lista de itens de navegação principais exibidos no `AppBar` e `Drawer`.

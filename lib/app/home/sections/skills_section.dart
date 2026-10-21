@@ -5,6 +5,10 @@ import 'package:kainato_portfolio/core/models/skill_category.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 import 'package:kainato_portfolio/widgets/base/skill_chip.dart';
 
+/// Apresenta as categorias de habilidades e suas tecnologias.
+///
+/// Parâmetros:
+/// - `sectionPadding`: espaçamento horizontal aplicado à seção.
 class SkillsSection extends StatelessWidget {
   final EdgeInsets sectionPadding;
 
@@ -41,6 +45,11 @@ class SkillsSection extends StatelessWidget {
   }
 }
 
+/// Cartão interativo que agrupa as habilidades de uma categoria.
+///
+/// Parâmetros:
+/// - `category`: categoria e lista de habilidades exibidas.
+/// - `isMobile`: informa se o layout está em uma tela estreita.
 class _SkillCategoryCard extends StatefulWidget {
   final SkillCategory category;
   final bool isMobile;
@@ -51,6 +60,7 @@ class _SkillCategoryCard extends StatefulWidget {
   State<_SkillCategoryCard> createState() => _SkillCategoryCardState();
 }
 
+/// Controla o destaque visual do cartão de categoria ao passar o mouse.
 class _SkillCategoryCardState extends State<_SkillCategoryCard> {
   bool _hovering = false;
 

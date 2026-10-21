@@ -1,4 +1,10 @@
-/// Representa um certificado exibido na página de Certificados.
+/// Dados de um certificado e seu endereço de verificação.
+///
+/// Parâmetros:
+/// - `title`: nome do certificado.
+/// - `issuer`: instituição que emitiu o certificado.
+/// - `date`: data ou período de emissão.
+/// - `verificationUrl`: endereço para validar o certificado.
 class Certificate {
   final String title;
   final String issuer;

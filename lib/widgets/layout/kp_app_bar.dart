@@ -7,6 +7,11 @@ import '../../core/utils/kp_launcher.dart';
 import '../base/kp_appbar_action.dart';
 import '../base/theme_mode_menu.dart';
 
+/// Barra superior com identidade do portfólio, navegação desktop e controle de tema.
+///
+/// Parâmetros:
+/// - `currentRoute`: rota atual usada como contexto de navegação.
+/// - `onSectionTap`: callback executado ao selecionar uma seção interna.
 class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// A rota (página) atual exibida no app bar.
   final KpRoutes currentRoute;

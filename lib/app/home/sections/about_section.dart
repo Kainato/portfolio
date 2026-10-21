@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 
+/// Apresenta cartões com informações resumidas sobre a experiência profissional.
+///
+/// Parâmetros:
+/// - `sectionPadding`: espaçamento horizontal aplicado à seção.
 class AboutSection extends StatelessWidget {
   final EdgeInsets sectionPadding;
 
@@ -43,6 +47,11 @@ class AboutSection extends StatelessWidget {
   }
 }
 
+/// Cartão com um título e uma frase informativa.
+///
+/// Parâmetros:
+/// - `title`: texto curto em destaque.
+/// - `text`: descrição complementar do cartão.
 class _InfoCard extends StatelessWidget {
   final String title;
   final String text;

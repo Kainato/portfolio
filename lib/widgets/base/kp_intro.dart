@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import '../../core/extension/context_extension.dart';
 import 'scroll_reveal.dart';
 
+/// Bloco introdutório que apresenta o título e a descrição de uma seção.
+///
+/// Parâmetros:
+/// - `title`: título curto exibido em destaque.
+/// - `content`: texto descritivo exibido abaixo do título.
 class KpIntro extends StatelessWidget {
   final String title;
   final String content;

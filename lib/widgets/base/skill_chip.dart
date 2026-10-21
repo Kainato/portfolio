@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import '../../core/models/skill.dart';
 import '../../core/utils/kp_launcher.dart';
 
+/// Chip interativo que apresenta uma habilidade e abre sua referência externa.
+///
+/// Parâmetros:
+/// - `skill`: dados da habilidade, incluindo nome, cores e URL.
 class SkillChip extends StatefulWidget {
   final Skill skill;
   const SkillChip({super.key, required this.skill});
@@ -11,6 +15,7 @@ class SkillChip extends StatefulWidget {
   State<SkillChip> createState() => _SkillChipState();
 }
 
+/// Mantém o estado de hover usado para destacar o chip.
 class _SkillChipState extends State<SkillChip> {
   bool _hovering = false;
 

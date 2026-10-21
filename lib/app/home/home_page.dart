@@ -14,6 +14,9 @@ import 'sections/process_section.dart';
 import 'sections/projects_section.dart';
 import 'sections/skills_section.dart';
 
+/// Página inicial que reúne as seções do portfólio em uma lista rolável.
+///
+/// Parâmetros: esta página não recebe parâmetros além da chave padrão do Flutter.
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -21,6 +24,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+/// Mantém o controlador de navegação entre as seções da página inicial.
+///
+/// Parâmetros: esta classe de estado não recebe parâmetros.
 class _HomePageState extends State<HomePage> {
   final HomeController _controller = HomeController();
 

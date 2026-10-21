@@ -4,6 +4,9 @@ import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 
+/// Exibe os canais de contato do portfólio.
+///
+/// Parâmetros: esta seção não recebe parâmetros.
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
 
@@ -55,6 +58,10 @@ class ContactSection extends StatelessWidget {
   }
 }
 
+/// Item clicável que apresenta um canal de contato e abre seu endereço.
+///
+/// Parâmetros:
+/// - `link`: dados do canal, incluindo rótulo, endereço e ícone.
 class _ContactChip extends StatelessWidget {
   final ContactLink link;
   const _ContactChip({required this.link});

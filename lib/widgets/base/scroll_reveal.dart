@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-/// Revela o conteúdo com um fade e um leve deslocamento quando entra no viewport.
+/// Revela o conteúdo com fade e leve deslocamento ao entrar na área visível.
+///
+/// Parâmetros:
+/// - `child`: widget que será animado durante a rolagem.
 class ScrollReveal extends StatefulWidget {
   const ScrollReveal({super.key, required this.child});
 
@@ -11,6 +14,7 @@ class ScrollReveal extends StatefulWidget {
   State<ScrollReveal> createState() => _ScrollRevealState();
 }
 
+/// Observa a posição da rolagem e inicia a animação quando o conteúdo aparece.
 class _ScrollRevealState extends State<ScrollReveal> {
   ScrollPosition? _position;
   bool _isVisible = false;

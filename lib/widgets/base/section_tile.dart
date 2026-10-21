@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-/// Envolve um card/tile de seção com elevação e escala sutis ao passar o mouse.
+/// Envolve conteúdo com resposta visual ao passar o mouse e ação opcional.
+///
+/// Parâmetros:
+/// - `child`: conteúdo exibido dentro do item.
+/// - `onTap`: ação opcional que torna o item interativo.
+/// - `semanticLabel`: descrição opcional para tecnologias assistivas.
 class SectionTile extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
@@ -17,6 +22,7 @@ class SectionTile extends StatefulWidget {
   State<SectionTile> createState() => _SectionTileState();
 }
 
+/// Mantém o estado de hover usado para animar o item da seção.
 class _SectionTileState extends State<SectionTile> {
   bool _hovering = false;
 

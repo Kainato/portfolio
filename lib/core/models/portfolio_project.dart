@@ -1,4 +1,12 @@
-/// Representa um projeto/case exibido na seção "Projetos".
+/// Dados de um projeto ou case exibido no portfólio.
+///
+/// Parâmetros:
+/// - `order`: marcador de ordem exibido no cartão.
+/// - `title`: nome do projeto.
+/// - `subtitle`: resumo curto do projeto.
+/// - `stack`: tecnologias usadas no projeto.
+/// - `description`: detalhes do problema e da solução.
+/// - `url`: endereço opcional para abrir o projeto ou case.
 class PortfolioProject {
   final String order;
   final String title;

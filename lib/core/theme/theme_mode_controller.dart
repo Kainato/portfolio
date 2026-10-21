@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Mantém a preferência de tema compartilhada pelos controles do aplicativo.
+///
+/// Parâmetros: o controlador compartilhado não recebe parâmetros.
 class ThemeModeController extends ChangeNotifier {
   ThemeModeController._();
 

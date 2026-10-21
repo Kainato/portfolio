@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 
+/// Apresenta as etapas usadas no processo de desenvolvimento de projetos.
+///
+/// Parâmetros:
+/// - `sectionPadding`: espaçamento horizontal aplicado à seção.
 class ProcessSection extends StatelessWidget {
   final EdgeInsets sectionPadding;
 
@@ -55,6 +59,13 @@ class ProcessSection extends StatelessWidget {
   }
 }
 
+/// Mostra uma etapa do processo com número, título e descrição.
+///
+/// Parâmetros:
+/// - `context`: contexto usado para adaptar o layout à largura da tela.
+/// - `number`: número que identifica a etapa.
+/// - `title`: nome da etapa.
+/// - `text`: descrição breve da etapa.
 class _ProcessStep extends StatelessWidget {
   final BuildContext context;
   final String number;

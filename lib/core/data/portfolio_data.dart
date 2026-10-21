@@ -9,6 +9,8 @@ import '../models/skill_category.dart';
 /// Fonte central de dados usados pelas telas do projeto.
 ///
 /// Essas informações são utilizadas para popular as diferentes seções do aplicativo e raramente precisam ser alteradas, apenas quando há atualizações relevantes no portfólio ou nos dados pessoais do desenvolvedor.
+///
+/// Parâmetros: esta classe de dados não recebe parâmetros.
 abstract final class PortfolioData {
   // Meu nome
   static const String name = 'Caio Calado';

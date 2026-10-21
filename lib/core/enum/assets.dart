@@ -1,7 +1,9 @@
+/// Assets locais usados pela interface do aplicativo.
 enum Assets {
   dashatar
 }
 
+/// Resolve cada asset para seu caminho dentro do projeto.
 extension AssetsExtension on Assets {
   String get path {
     switch (this) {

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/theme_mode_controller.dart';
 
-/// Toque curto alterna entre claro e escuro; toque longo abre as opções.
+/// Alterna o tema com toque curto e mostra as opções ao ser pressionado.
+///
+/// Parâmetros:
+/// - `showLabel`: exibe o nome e o modo atual, indicado para o menu lateral.
 class ThemeModeMenu extends StatelessWidget {
   const ThemeModeMenu({super.key, this.showLabel = false});
 

@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+/// Item interativo do drawer com ícone, rótulo e estado selecionado.
+///
+/// Parâmetros:
+/// - `selected`: indica se o item representa a seleção atual.
+/// - `label`: texto visível do item.
+/// - `semanticLabel`: descrição lida por tecnologias assistivas.
+/// - `icon`: ícone exibido ao lado do texto.
+/// - `onTap`: ação executada ao selecionar o item.
 class KpDrawerListTile extends StatelessWidget {
   /// Indica se o item está selecionado.
   final bool selected;
