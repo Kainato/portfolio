@@ -10,7 +10,6 @@ import '../../widgets/layout/kp_scaffold.dart';
 import 'sections/about_section.dart';
 import 'sections/contact_section.dart';
 import 'sections/hero_section.dart';
-import 'sections/process_section.dart';
 import 'sections/projects_section.dart';
 import 'sections/skills_section.dart';
 
@@ -50,7 +49,9 @@ class _HomePageState extends State<HomePage> {
           ),
           KpIntro(
             title: 'SOBRE MIM',
-            content: PortfolioData.about,
+            content:
+                '"A arte de fazer o complexo parecer fácil no primeiro clique"',
+            italicContent: true,
           ).buildSliver(context),
           SliverToBoxAdapter(
             child: ScrollReveal(
@@ -87,18 +88,6 @@ class _HomePageState extends State<HomePage> {
           SliverToBoxAdapter(
             child: ScrollReveal(
               child: ProjectsSection(
-                sectionPadding: _controller.sectionPadding(context),
-              ),
-            ),
-          ),
-          KpIntro(
-            title: 'PROCESSO',
-            content:
-                'Minhas etapas de trabalho, da concepção com metodologias ágeis (Scrum/Kanban) até a entrega final.',
-          ).buildSliver(context),
-          SliverToBoxAdapter(
-            child: ScrollReveal(
-              child: ProcessSection(
                 sectionPadding: _controller.sectionPadding(context),
               ),
             ),

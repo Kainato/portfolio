@@ -35,6 +35,15 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
     final bool isMobile = context.isMobile;
 
     return AppBar(
+      leading: isMobile
+          ? Builder(
+              builder: (context) => IconButton(
+                tooltip: 'Abrir menu de navegação',
+                icon: const Icon(Icons.menu),
+                onPressed: Scaffold.of(context).openDrawer,
+              ),
+            )
+          : null,
       title: const Text('Caio Calado'),
       actions: [
         if (!isMobile) ...[

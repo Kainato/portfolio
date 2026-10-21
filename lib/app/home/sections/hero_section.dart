@@ -5,7 +5,7 @@ import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/kp_fallback_image.dart';
 
-/// Apresenta a introdução principal, o avatar e atalhos para projetos e GitHub.
+/// Apresenta a introdução, a foto em telas grandes, o avatar mobile e atalhos.
 ///
 /// Parâmetros:
 /// - `onProjectsTap`: ação opcional para navegar até os projetos.
@@ -16,7 +16,13 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = context.isDesktop;
+    // A coluna lateral precisa caber junto ao texto e à foto; 1100 px deixava
+    // telas de notebook sem a composição desktop, mesmo com espaço suficiente.
+    final isDesktop = context.width >= 960;
+    final imageSize = context.isMobile ? 180.0 : 280.0;
+    final imagePath = isDesktop
+        ? Assets.caioPortrait.path
+        : Assets.dashatar.path;
 
     final textColumn = Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -75,11 +81,29 @@ class HeroSection extends StatelessWidget {
     );
 
     final image = Semantics(
-      label: 'Ilustração de avatar do desenvolvedor',
-      child: KpFallbackImage(
-        assetPath: Assets.dashatar.path,
-        width: 280,
-        height: 280,
+      label: isDesktop
+          ? 'Foto de Caio Calado de Araújo'
+          : 'Avatar do Flutter Bird',
+      image: true,
+      child: Container(
+        width: imageSize,
+        height: imageSize,
+        padding: EdgeInsets.all(isDesktop ? 5 : 0),
+        decoration: BoxDecoration(
+          border: isDesktop
+              ? Border.all(color: context.primaryColor, width: 2)
+              : null,
+          borderRadius: BorderRadius.circular(isDesktop ? 22 : 0),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(isDesktop ? 16 : 0),
+          child: KpFallbackImage(
+            assetPath: imagePath,
+            width: imageSize - (isDesktop ? 14 : 0),
+            height: imageSize - (isDesktop ? 14 : 0),
+            fit: isDesktop ? BoxFit.cover : BoxFit.contain,
+          ),
+        ),
       ),
     );
 

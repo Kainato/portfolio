@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/data/contact_link.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
+import 'package:kainato_portfolio/core/theme/app_text_styles.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 
@@ -13,7 +14,7 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 90),
+      margin: EdgeInsets.only(top: context.isMobile ? 40 : 90),
       padding: EdgeInsets.symmetric(
         horizontal: context.isMobile ? 20 : 32,
         vertical: 70,
@@ -27,19 +28,15 @@ class ContactSection extends StatelessWidget {
             children: [
               Text(
                 'VAMOS CONVERSAR?',
-                style: TextStyle(
+                style: AppTextStyles.sectionTitle(context).copyWith(
                   color: context.primaryColor,
                   letterSpacing: 2,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 14),
               Text(
                 'Tem um projeto interessante?',
-                style: TextStyle(
-                  fontSize: context.isMobile ? 28 : 38,
-                  fontWeight: FontWeight.w800,
-                ),
+                style: AppTextStyles.subtitle(context),
               ),
               const SizedBox(height: 30),
               Wrap(

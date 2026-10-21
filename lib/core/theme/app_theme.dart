@@ -46,6 +46,11 @@ abstract final class AppTheme {
         elevation: 0,
         centerTitle: false,
       ),
+      iconButtonTheme: const IconButtonThemeData(
+        style: ButtonStyle(
+          mouseCursor: WidgetStatePropertyAll(SystemMouseCursors.click),
+        ),
+      ),
       cardTheme: CardThemeData(
         color: colorScheme.surfaceContainer,
         elevation: 0,

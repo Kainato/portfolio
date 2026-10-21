@@ -24,15 +24,6 @@ abstract final class PortfolioData {
       'Desenvolvedor Flutter apaixonado por criar soluções digitais que unem tecnologia, '
       'clareza e uma boa experiência para quem usa.';
 
-  // Descrição exibida na seção "Sobre" do aplicativo
-  static const String about =
-      'Desenvolvedor Frontend focado em Flutter & Dart com mais de 6 anos de experiência no '
-      'desenvolvimento, arquitetura e manutenção de aplicações móveis e web. Ampla vivência na '
-      'estruturação de software com Provider, MobX e GetX, consumo de APIs REST e '
-      'desenvolvimento de painéis administrativos/backends com Laravel e Filament. Forte atuação '
-      'em colaboração com times de UX/UI (Figma), aplicação de metodologias ágeis e publicação '
-      'de aplicativos nas lojas.';
-
   static const List<Skill> skills = [
     Skill(
       name: 'Flutter',
@@ -267,23 +258,24 @@ abstract final class PortfolioData {
   static const List<PortfolioProject> projects = [
     PortfolioProject(
       order: '01',
-      title: 'Teatech — Clínica Mundos',
+      title: 'Teatech — Amigo Tech & Clínica Mundos',
       subtitle:
-          'Plataforma web para digitalizar e unificar processos de uma rede de clínicas.',
-      stack: 'Laravel • Filament PHP • MySQL',
+          'Plataforma web para digitalizar processos e unificar sistemas da Clínica Mundos.',
+      stack: 'Web • Laravel • Filament PHP',
       description:
-          'Migração de processos em papel e centralização de 3 sistemas legados em uma única '
-          'solução, acelerando a geração de relatórios e métricas para a operação da clínica.',
+          'Na atuação junto à Amigo Tech e à Clínica Mundos, colaborei no desenvolvimento da '
+          'Teatech, migrando processos em papel e centralizando 3 sistemas antigos em uma única '
+          'solução. A unificação acelerou a geração de relatórios e métricas da clínica.',
     ),
     PortfolioProject(
       order: '02',
       title: 'App Corporativo — Clínica Mundos',
-      subtitle:
-          'Aplicativo mobile para filiais, com gestão de estado via GetX.',
+      subtitle: 'Aplicativo mobile das filiais integrado à plataforma Teatech.',
       stack: 'Flutter • GetX • REST API',
       description:
-          'Funcionalidades mobile integradas via API REST para dar suporte ao dia a dia das '
-          'filiais, com navegação e estado gerenciados por GetX.',
+          'Na Amigo Tech / Clínica Mundos, construí e implementei funcionalidades mobile para '
+          'o aplicativo corporativo usado pelas filiais. A integração com a Teatech é feita via '
+          'APIs REST, com GetX para gerenciamento de estado e navegação.',
     ),
     PortfolioProject(
       order: '03',
@@ -291,32 +283,41 @@ abstract final class PortfolioData {
       subtitle: 'Plataforma cross-platform para redes de clínicas de terapia.',
       stack: 'Flutter • MobX • Provider',
       description:
-          'Construção e manutenção da plataforma principal da startup (mobile e web), '
-          'atendendo mais de 10 redes de clínicas ativas, com arquitetura reativa e publicação '
-          'contínua nas lojas.',
+          'Construção e manutenção da plataforma principal da startup para mobile e web, usada '
+          'diariamente por mais de 10 redes de clínicas e suas filiais. Arquitetura reativa com '
+          'MobX e Provider, integração com APIs REST e publicação nas lojas Google Play e App Store.',
     ),
     PortfolioProject(
       order: '04',
-      title: 'Bibliotech',
+      title: 'Dart Lab',
       subtitle:
-          'Projeto que transforma o "cemitério de repositórios" em uma documentação viva que consolida conhecimentos adquiridos.',
-      stack: 'TypeScript • Tailwind CSS • Markdown',
+          'Laboratório de programação dedicado a algoritmos, estruturas de dados e performance em Dart.',
+      stack: 'Dart • Algoritmos • Estruturas de dados',
       description:
-          'Este repositório atua como um hub de conhecimento e referência técnica: '
-          'um guia prático para rápida consulta, reutilização de snippets testados e '
-          'registro da evolução em diferentes tecnologias e padrões de arquitetura. '
-          'O conteúdo é centralizado, com navegação adaptada para desktop e mobile.',
-      url: 'https://bibliotech-three.vercel.app/',
+          'Ambiente de pesquisa e prática em engenharia de software no ecossistema Dart, com '
+          'implementações de algoritmos avançados e estruturas de dados otimizadas.',
+      url: 'https://github.com/Kainato/dart_lab',
     ),
     PortfolioProject(
       order: '05',
+      title: 'Bibliotech',
+      subtitle:
+          'Plataforma de documentação técnica que organiza cursos, aprendizados e boas práticas.',
+      stack: 'Docusaurus • React • Markdown • Vercel',
+      description:
+          'Documentação escalável publicada em produção para catalogar cursos, aprendizados, '
+          'notas de desenvolvimento e boas práticas. O versionamento segue conceitos de GitOps.',
+      url: 'https://bibliotech-three.vercel.app/',
+    ),
+    PortfolioProject(
+      order: '06',
       title: 'Este portfólio',
       subtitle:
-          'Site pessoal responsivo desenvolvido inteiramente em Flutter Web.',
-      stack: 'Flutter Web • Dart',
+          'Portfólio profissional responsivo que reúne trajetória, projetos e métricas de impacto.',
+      stack: 'Flutter Web • HTML/CSS • Git • GitHub Pages',
       description:
-          'Vitrine de projetos e experiência profissional, com layout responsivo, tema '
-          'centralizado e navegação adaptada para desktop e mobile.',
+          'Aplicação web responsiva desenvolvida para centralizar o histórico profissional, os '
+          'projetos e seus resultados, com publicação contínua via GitHub Pages.',
       url: 'https://github.com/Kainato/kainato_portfolio',
     ),
   ];
