@@ -80,7 +80,7 @@ class _InfoCard extends StatelessWidget {
                 Text(
                   text,
                   style: context.bodyMedium?.copyWith(
-                    color: Colors.white60,
+                    color: context.onSurfaceVariantColor,
                     height: 1.4,
                   ),
                 ),

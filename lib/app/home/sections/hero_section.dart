@@ -40,11 +40,7 @@ class HeroSection extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 720),
           child: Text(
             PortfolioData.heroDescription,
-            style: const TextStyle(
-              fontSize: 22,
-              height: 1.5,
-              color: Colors.white70,
-            ),
+            style: context.bodyLarge?.copyWith(fontSize: 22, height: 1.5),
           ),
         ),
         const SizedBox(height: 35),

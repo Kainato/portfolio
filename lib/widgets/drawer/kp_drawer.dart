@@ -57,7 +57,6 @@ class KpDrawer extends StatelessWidget {
                   openExternalUrl(context, link.url);
                 },
               ),
-            const SizedBox(height: 12),
           ],
         ),
       ),

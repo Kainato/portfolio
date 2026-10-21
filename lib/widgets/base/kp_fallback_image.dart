@@ -36,7 +36,11 @@ class KpFallbackImage extends StatelessWidget {
         width: width,
         height: height,
         child: Center(
-          child: Icon(fallbackIcon, size: 48, color: Colors.white24),
+          child: Icon(
+            fallbackIcon,
+            size: 48,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
         ),
       ),
     );

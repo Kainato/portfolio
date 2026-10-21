@@ -85,12 +85,15 @@ class _ProcessStep extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: context.titleLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 6),
           Text(
             text,
-            style: const TextStyle(color: Colors.white54, height: 1.35),
+            style: context.bodyMedium?.copyWith(
+              color: context.onSurfaceVariantColor,
+              height: 1.35,
+            ),
           ),
         ],
       ),

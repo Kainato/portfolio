@@ -5,6 +5,7 @@ import '../../core/extension/context_extension.dart';
 import '../../core/routes/kp_routes.dart';
 import '../../core/utils/kp_launcher.dart';
 import '../base/kp_appbar_action.dart';
+import '../base/theme_mode_menu.dart';
 
 class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// A rota (página) atual exibida no app bar.
@@ -39,6 +40,8 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           const SizedBox(width: 8),
         ],
+        const ThemeModeMenu(),
+        const SizedBox(width: 8),
       ],
     );
   }

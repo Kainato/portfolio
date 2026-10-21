@@ -64,17 +64,22 @@ class _ProjectCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 project.subtitle,
-                style: context.bodyLarge?.copyWith(color: Colors.white70),
+                style: context.bodyLarge?.copyWith(
+                  color: context.onSurfaceVariantColor,
+                ),
               ),
               const SizedBox(height: 18),
               Text(
                 project.stack,
-                style: const TextStyle(color: Color(0xFFB8A9FF)),
+                style: TextStyle(color: context.tertiaryColor),
               ),
               const SizedBox(height: 18),
               Text(
                 project.description,
-                style: const TextStyle(height: 1.5, color: Colors.white60),
+                style: context.bodyMedium?.copyWith(
+                  height: 1.5,
+                  color: context.onSurfaceVariantColor,
+                ),
               ),
               if (url != null) ...[
                 const SizedBox(height: 18),

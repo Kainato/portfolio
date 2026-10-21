@@ -35,15 +35,18 @@ class KpDrawerListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      selected: selected,
-      label: semanticLabel,
-      child: ListTile(
-        leading: Icon(icon),
-        title: Text(label),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Semantics(
+        button: true,
         selected: selected,
-        onTap: onTap,
+        label: semanticLabel,
+        child: ListTile(
+          leading: Icon(icon),
+          title: Text(label),
+          selected: selected,
+          onTap: onTap,
+        ),
       ),
     );
   }
