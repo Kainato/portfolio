@@ -87,6 +87,17 @@ class HeroSection extends StatelessWidget {
                 child: const Text('GitHub'),
               ),
             ),
+            Semantics(
+              button: true,
+              label: 'Abrir perfil no LinkedIn em uma nova aba',
+              child: OutlinedButton(
+                onPressed: () => openExternalUrl(
+                  context,
+                  'https://www.linkedin.com/in/kainato/',
+                ),
+                child: const Text('LinkedIn'),
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 34),
