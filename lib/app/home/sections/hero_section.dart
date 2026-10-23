@@ -181,13 +181,11 @@ class _Portrait extends StatelessWidget {
         height: height,
         padding: EdgeInsets.all(isDesktop ? 5 : 0),
         decoration: BoxDecoration(
-          border: isDesktop
-              ? Border.all(color: context.primaryColor, width: 2)
-              : null,
+          border: Border.all(color: context.primaryColor, width: 2),
           borderRadius: BorderRadius.circular(isDesktop ? 22 : 16),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(isDesktop ? 16 : 16),
+          borderRadius: BorderRadius.circular(isDesktop ? 16 : 12),
           child: KpFallbackImage(
             assetPath: Assets.caioPortrait.path,
             width: width - (isDesktop ? 14 : 0),
