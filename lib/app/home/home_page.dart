@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/app/home/home_controller.dart';
 
-import '../../core/data/portfolio_data.dart';
-import '../../core/extension/context_extension.dart';
 import '../../core/routes/kp_routes.dart';
 import '../../widgets/base/kp_intro.dart';
 import '../../widgets/base/scroll_reveal.dart';
@@ -96,18 +94,6 @@ class _HomePageState extends State<HomePage> {
             key: _controller.contatoKey,
             child: const ScrollReveal(child: ContactSection()),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: 70)),
-          SliverToBoxAdapter(
-            child: ScrollReveal(
-              child: Center(
-                child: Text(
-                  '© 2026 ${PortfolioData.name} • Flutter Developer',
-                  style: TextStyle(color: context.onSurfaceVariantColor),
-                ),
-              ),
-            ),
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 30)),
         ],
       ),
     ),

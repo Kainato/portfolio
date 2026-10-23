@@ -5,6 +5,8 @@ import 'package:kainato_portfolio/core/theme/app_text_styles.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 
+import '../../../core/data/portfolio_data.dart';
+
 /// Exibe os canais de contato do portfólio.
 ///
 /// Parâmetros: esta seção não recebe parâmetros.
@@ -28,10 +30,9 @@ class ContactSection extends StatelessWidget {
             children: [
               Text(
                 'VAMOS CONVERSAR?',
-                style: AppTextStyles.sectionTitle(context).copyWith(
-                  color: context.primaryColor,
-                  letterSpacing: 2,
-                ),
+                style: AppTextStyles.sectionTitle(
+                  context,
+                ).copyWith(color: context.primaryColor, letterSpacing: 2),
               ),
               const SizedBox(height: 14),
               Text(
@@ -46,6 +47,16 @@ class ContactSection extends StatelessWidget {
                   for (final link in ContactLink.contactLinks)
                     _ContactChip(link: link),
                 ],
+              ),
+              const SizedBox(height: 70),
+              Center(
+                child: Text(
+                  '© 2026 ${PortfolioData.name} • Flutter Developer',
+                  style: TextStyle(
+                    color: context.onSurfaceVariantColor,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
               ),
             ],
           ),
