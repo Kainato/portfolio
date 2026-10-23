@@ -16,44 +16,56 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A coluna lateral precisa caber junto ao texto e à foto; 1100 px deixava
-    // telas de notebook sem a composição desktop, mesmo com espaço suficiente.
+    final isMobile = context.isMobile;
+    // A coluna lateral precisa caber junto ao texto e à foto em notebooks.
     final isDesktop = context.width >= 960;
-    final imageSize = context.isMobile ? 180.0 : 280.0;
-    final imagePath = isDesktop
-        ? Assets.caioPortrait.path
-        : Assets.dashatar.path;
+    final image = _Portrait(isDesktop: isDesktop);
 
     final textColumn = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          PortfolioData.tagline,
-          style: TextStyle(
-            letterSpacing: 2,
-            color: context.primaryColor,
-            fontWeight: FontWeight.bold,
+        if (!isMobile) ...[
+          Text(
+            PortfolioData.name.toUpperCase(),
+            style: context.labelLarge?.copyWith(
+              letterSpacing: 2,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(height: 22),
+          const SizedBox(height: 7),
+        ],
+        if (!isMobile) ...[
+          Text(
+            PortfolioData.tagline,
+            style: TextStyle(
+              letterSpacing: 1.8,
+              color: context.primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 18),
+        ],
         Text(
-          'Olá, eu sou\n${PortfolioData.name}!',
+          'Transformo processos complexos em produtos digitais simples de usar.',
           style: context.displayLarge?.copyWith(
             fontWeight: FontWeight.w800,
-            height: 1,
-            fontSize: context.isMobile ? 40 : null,
+            height: 1.03,
+            fontSize: isMobile ? 38 : 54,
           ),
         ),
-        const SizedBox(height: 25),
+        const SizedBox(height: 20),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 720),
+          constraints: const BoxConstraints(maxWidth: 620),
           child: Text(
             PortfolioData.heroDescription,
-            style: context.bodyLarge?.copyWith(fontSize: 22, height: 1.5),
+            style: context.bodyLarge?.copyWith(
+              fontSize: isMobile ? 18 : 20,
+              height: 1.5,
+            ),
           ),
         ),
-        const SizedBox(height: 35),
+        const SizedBox(height: 28),
         Wrap(
           spacing: 14,
           runSpacing: 14,
@@ -77,39 +89,14 @@ class HeroSection extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 34),
+        const _ImpactHighlights(),
       ],
     );
 
-    final image = Semantics(
-      label: isDesktop
-          ? 'Foto de Caio Calado de Araújo'
-          : 'Avatar do Flutter Bird',
-      image: true,
-      child: Container(
-        width: imageSize,
-        height: imageSize,
-        padding: EdgeInsets.all(isDesktop ? 5 : 0),
-        decoration: BoxDecoration(
-          border: isDesktop
-              ? Border.all(color: context.primaryColor, width: 2)
-              : null,
-          borderRadius: BorderRadius.circular(isDesktop ? 22 : 0),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(isDesktop ? 16 : 0),
-          child: KpFallbackImage(
-            assetPath: imagePath,
-            width: imageSize - (isDesktop ? 14 : 0),
-            height: imageSize - (isDesktop ? 14 : 0),
-            fit: isDesktop ? BoxFit.cover : BoxFit.contain,
-          ),
-        ),
-      ),
-    );
-
     return Container(
-      constraints: const BoxConstraints(minHeight: 650),
-      padding: EdgeInsets.all(context.isMobile ? 20 : 32),
+      constraints: BoxConstraints(minHeight: isMobile ? 720 : 650),
+      padding: EdgeInsets.all(isMobile ? 20 : 32),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1100),
@@ -122,9 +109,133 @@ class HeroSection extends StatelessWidget {
                     image,
                   ],
                 )
-              : textColumn,
+              : isMobile
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        image,
+                        const SizedBox(width: 18),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                PortfolioData.name,
+                                style: context.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                PortfolioData.tagline,
+                                style: context.labelMedium?.copyWith(
+                                  color: context.primaryColor,
+                                  letterSpacing: 1.2,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 32),
+                    textColumn,
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(child: image),
+                    const SizedBox(height: 32),
+                    textColumn,
+                  ],
+                ),
         ),
       ),
     );
   }
+}
+
+class _Portrait extends StatelessWidget {
+  const _Portrait({required this.isDesktop});
+
+  final bool isDesktop;
+
+  @override
+  Widget build(BuildContext context) {
+    final width = isDesktop ? 300.0 : 96.0;
+    final height = isDesktop ? 380.0 : 120.0;
+
+    return Semantics(
+      label: 'Foto de Caio Calado de Araújo',
+      image: true,
+      child: Container(
+        width: width,
+        height: height,
+        padding: EdgeInsets.all(isDesktop ? 5 : 0),
+        decoration: BoxDecoration(
+          border: isDesktop
+              ? Border.all(color: context.primaryColor, width: 2)
+              : null,
+          borderRadius: BorderRadius.circular(isDesktop ? 22 : 16),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(isDesktop ? 16 : 16),
+          child: KpFallbackImage(
+            assetPath: Assets.caioPortrait.path,
+            width: width - (isDesktop ? 14 : 0),
+            height: height - (isDesktop ? 14 : 0),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ImpactHighlights extends StatelessWidget {
+  const _ImpactHighlights();
+
+  @override
+  Widget build(BuildContext context) => Wrap(
+    spacing: 28,
+    runSpacing: 14,
+    children: const [
+      _ImpactHighlight(value: '6+', label: 'anos com Flutter'),
+      _ImpactHighlight(value: '10+', label: 'redes atendidas'),
+      _ImpactHighlight(value: '3', label: 'sistemas unificados'),
+    ],
+  );
+}
+
+class _ImpactHighlight extends StatelessWidget {
+  const _ImpactHighlight({required this.value, required this.label});
+
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Text(
+        value,
+        style: context.titleLarge?.copyWith(
+          color: context.primaryColor,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+      const SizedBox(width: 8),
+      Text(
+        label,
+        style: context.bodyMedium?.copyWith(
+          color: context.onSurfaceVariantColor,
+        ),
+      ),
+    ],
+  );
 }

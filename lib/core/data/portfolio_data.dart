@@ -17,12 +17,12 @@ abstract final class PortfolioData {
   // Meu cargo profissional
   static const String role = 'Desenvolvedor Flutter Sênior';
   // Minha tagline profissional
-  static const String tagline = 'FLUTTER • MOBILE • UI/UX';
+  static const String tagline = 'DESENVOLVEDOR FLUTTER SÊNIOR · MOBILE & WEB';
 
   // Descrição exibida na seção hero do aplicativo
   static const String heroDescription =
-      'Desenvolvedor Flutter apaixonado por criar soluções digitais que unem tecnologia, '
-      'clareza e uma boa experiência para quem usa.';
+      'Trabalho com Flutter em produtos mobile e web, da arquitetura à interface, '
+      'conectando necessidades reais de negócio a experiências claras e confiáveis.';
 
   static const List<Skill> skills = [
     Skill(
