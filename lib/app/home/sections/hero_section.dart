@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kainato_portfolio/core/data/portfolio_data.dart';
 import 'package:kainato_portfolio/core/enum/assets.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
@@ -72,30 +73,39 @@ class HeroSection extends StatelessWidget {
           children: [
             Semantics(
               button: true,
-              label: 'Ir para a seção de projetos',
+              label: 'Ver mais e ir para a seção de projetos',
               child: FilledButton(
                 onPressed: onProjectsTap,
-                child: const Text('Ver projetos'),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Ver projetos'),
+                    SizedBox(width: 8),
+                    Icon(Icons.expand_more_rounded, size: 20),
+                  ],
+                ),
               ),
             ),
             Semantics(
               button: true,
               label: 'Abrir perfil no GitHub em uma nova aba',
-              child: OutlinedButton(
+              child: OutlinedButton.icon(
                 onPressed: () =>
                     openExternalUrl(context, 'https://github.com/Kainato'),
-                child: const Text('GitHub'),
+                icon: const FaIcon(FontAwesomeIcons.github, size: 17),
+                label: const Text('GitHub'),
               ),
             ),
             Semantics(
               button: true,
               label: 'Abrir perfil no LinkedIn em uma nova aba',
-              child: OutlinedButton(
+              child: OutlinedButton.icon(
                 onPressed: () => openExternalUrl(
                   context,
                   'https://www.linkedin.com/in/kainato/',
                 ),
-                child: const Text('LinkedIn'),
+                icon: const FaIcon(FontAwesomeIcons.linkedinIn, size: 17),
+                label: const Text('LinkedIn'),
               ),
             ),
           ],
