@@ -50,8 +50,8 @@ class HeroSection extends StatelessWidget {
           'Transformo processos complexos em produtos digitais simples de usar.',
           style: context.displayLarge?.copyWith(
             fontWeight: FontWeight.w800,
-            height: 1.03,
-            fontSize: isMobile ? 38 : 54,
+            height: isMobile ? 1.08 : 1.03,
+            fontSize: isMobile ? 34 : 54,
           ),
         ),
         const SizedBox(height: 20),
@@ -95,8 +95,11 @@ class HeroSection extends StatelessWidget {
     );
 
     return Container(
-      constraints: BoxConstraints(minHeight: isMobile ? 720 : 650),
-      padding: EdgeInsets.all(isMobile ? 20 : 32),
+      constraints: BoxConstraints(minHeight: isMobile ? 0 : 650),
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 20 : 32,
+        vertical: isMobile ? 28 : 32,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1100),
@@ -201,14 +204,45 @@ class _ImpactHighlights extends StatelessWidget {
   const _ImpactHighlights();
 
   @override
-  Widget build(BuildContext context) => Wrap(
-    spacing: 28,
-    runSpacing: 14,
-    children: const [
-      _ImpactHighlight(value: '6+', label: 'anos com Flutter'),
-      _ImpactHighlight(value: '10+', label: 'redes atendidas'),
-      _ImpactHighlight(value: '3', label: 'sistemas unificados'),
-    ],
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) {
+      const spacing = 16.0;
+      final columns = constraints.maxWidth < 350
+          ? 1
+          : constraints.maxWidth < 500
+          ? 2
+          : 3;
+      final itemWidth =
+          (constraints.maxWidth - spacing * (columns - 1)) / columns;
+
+      return Wrap(
+        spacing: spacing,
+        runSpacing: 16,
+        children: [
+          SizedBox(
+            width: itemWidth,
+            child: const _ImpactHighlight(
+              value: '6+',
+              label: 'anos com Flutter',
+            ),
+          ),
+          SizedBox(
+            width: itemWidth,
+            child: const _ImpactHighlight(
+              value: '10+',
+              label: 'redes atendidas',
+            ),
+          ),
+          SizedBox(
+            width: itemWidth,
+            child: const _ImpactHighlight(
+              value: '3',
+              label: 'sistemas unificados',
+            ),
+          ),
+        ],
+      );
+    },
   );
 }
 
@@ -219,20 +253,20 @@ class _ImpactHighlight extends StatelessWidget {
   final String label;
 
   @override
-  Widget build(BuildContext context) => Row(
-    mainAxisSize: MainAxisSize.min,
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
         value,
-        style: context.titleLarge?.copyWith(
+        style: context.headlineSmall?.copyWith(
           color: context.primaryColor,
           fontWeight: FontWeight.w800,
         ),
       ),
-      const SizedBox(width: 8),
+      const SizedBox(height: 2),
       Text(
         label,
-        style: context.bodyMedium?.copyWith(
+        style: context.bodySmall?.copyWith(
           color: context.onSurfaceVariantColor,
         ),
       ),
