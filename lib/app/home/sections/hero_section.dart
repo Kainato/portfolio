@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kainato_portfolio/core/data/portfolio_data.dart';
 import 'package:kainato_portfolio/core/enum/assets.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/kp_fallback_image.dart';
 
+/// Apresenta a introdução, a foto em telas grandes, o avatar mobile e atalhos.
+///
+/// Parâmetros:
+/// - `onProjectsTap`: ação opcional para navegar até os projetos.
 class HeroSection extends StatelessWidget {
   final VoidCallback? onProjectsTap;
 
@@ -12,80 +17,110 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = context.isDesktop;
+    final isMobile = context.isMobile;
+    // A coluna lateral precisa caber junto ao texto e à foto em notebooks.
+    final isDesktop = context.width >= 960;
+    final image = _Portrait(isDesktop: isDesktop);
 
     final textColumn = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          PortfolioData.tagline,
-          style: TextStyle(
-            letterSpacing: 2,
-            color: context.primaryColor,
-            fontWeight: FontWeight.bold,
+        if (!isMobile) ...[
+          Text(
+            PortfolioData.name.toUpperCase(),
+            style: context.labelLarge?.copyWith(
+              letterSpacing: 2,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(height: 22),
+          const SizedBox(height: 7),
+        ],
+        if (!isMobile) ...[
+          Text(
+            PortfolioData.tagline,
+            style: TextStyle(
+              letterSpacing: 1.8,
+              color: context.primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 18),
+        ],
         Text(
-          'Olá, eu sou\n${PortfolioData.name}!',
+          'Transformo processos complexos em produtos digitais simples de usar.',
           style: context.displayLarge?.copyWith(
             fontWeight: FontWeight.w800,
-            height: 1,
-            fontSize: context.isMobile ? 40 : null,
+            height: isMobile ? 1.08 : 1.03,
+            fontSize: isMobile ? 34 : 54,
           ),
         ),
-        const SizedBox(height: 25),
+        const SizedBox(height: 20),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 720),
+          constraints: const BoxConstraints(maxWidth: 620),
           child: Text(
             PortfolioData.heroDescription,
-            style: const TextStyle(
-              fontSize: 22,
+            style: context.bodyLarge?.copyWith(
+              fontSize: isMobile ? 18 : 20,
               height: 1.5,
-              color: Colors.white70,
             ),
           ),
         ),
-        const SizedBox(height: 35),
+        const SizedBox(height: 28),
         Wrap(
           spacing: 14,
           runSpacing: 14,
           children: [
             Semantics(
               button: true,
-              label: 'Ir para a seção de projetos',
+              label: 'Ver mais e ir para a seção de projetos',
               child: FilledButton(
                 onPressed: onProjectsTap,
-                child: const Text('Ver projetos'),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Ver projetos'),
+                    SizedBox(width: 8),
+                    Icon(Icons.expand_more_rounded, size: 20),
+                  ],
+                ),
               ),
             ),
             Semantics(
               button: true,
               label: 'Abrir perfil no GitHub em uma nova aba',
-              child: OutlinedButton(
+              child: OutlinedButton.icon(
                 onPressed: () =>
                     openExternalUrl(context, 'https://github.com/Kainato'),
-                child: const Text('GitHub'),
+                icon: const FaIcon(FontAwesomeIcons.github, size: 17),
+                label: const Text('GitHub'),
+              ),
+            ),
+            Semantics(
+              button: true,
+              label: 'Abrir perfil no LinkedIn em uma nova aba',
+              child: OutlinedButton.icon(
+                onPressed: () => openExternalUrl(
+                  context,
+                  'https://www.linkedin.com/in/kainato/',
+                ),
+                icon: const FaIcon(FontAwesomeIcons.linkedinIn, size: 17),
+                label: const Text('LinkedIn'),
               ),
             ),
           ],
         ),
+        const SizedBox(height: 34),
+        const _ImpactHighlights(),
       ],
     );
 
-    final image = Semantics(
-      label: 'Ilustração de avatar do desenvolvedor',
-      child: KpFallbackImage(
-        assetPath: Assets.dashatar.path,
-        width: 280,
-        height: 280,
-      ),
-    );
-
     return Container(
-      constraints: const BoxConstraints(minHeight: 650),
-      padding: EdgeInsets.all(context.isMobile ? 20 : 32),
+      constraints: BoxConstraints(minHeight: isMobile ? 0 : 650),
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 20 : 32,
+        vertical: isMobile ? 28 : 32,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1100),
@@ -98,9 +133,162 @@ class HeroSection extends StatelessWidget {
                     image,
                   ],
                 )
-              : textColumn,
+              : isMobile
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        image,
+                        const SizedBox(width: 18),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                PortfolioData.name,
+                                style: context.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                PortfolioData.tagline,
+                                style: context.labelMedium?.copyWith(
+                                  color: context.primaryColor,
+                                  letterSpacing: 1.2,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 32),
+                    textColumn,
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(child: image),
+                    const SizedBox(height: 32),
+                    textColumn,
+                  ],
+                ),
         ),
       ),
     );
   }
+}
+
+class _Portrait extends StatelessWidget {
+  const _Portrait({required this.isDesktop});
+
+  final bool isDesktop;
+
+  @override
+  Widget build(BuildContext context) {
+    final width = isDesktop ? 300.0 : 96.0;
+    final height = isDesktop ? 380.0 : 120.0;
+
+    return Semantics(
+      label: 'Foto de Caio Calado de Araújo',
+      image: true,
+      child: Container(
+        width: width,
+        height: height,
+        padding: EdgeInsets.all(isDesktop ? 5 : 0),
+        decoration: BoxDecoration(
+          border: Border.all(color: context.primaryColor, width: 2),
+          borderRadius: BorderRadius.circular(isDesktop ? 22 : 16),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(isDesktop ? 16 : 12),
+          child: KpFallbackImage(
+            assetPath: Assets.caioPortrait.path,
+            width: width - (isDesktop ? 14 : 0),
+            height: height - (isDesktop ? 14 : 0),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ImpactHighlights extends StatelessWidget {
+  const _ImpactHighlights();
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) {
+      const spacing = 16.0;
+      final columns = constraints.maxWidth < 350
+          ? 1
+          : constraints.maxWidth < 500
+          ? 2
+          : 3;
+      final itemWidth =
+          (constraints.maxWidth - spacing * (columns - 1)) / columns;
+
+      return Wrap(
+        spacing: spacing,
+        runSpacing: 16,
+        children: [
+          SizedBox(
+            width: itemWidth,
+            child: const _ImpactHighlight(
+              value: '6+',
+              label: 'anos com Flutter',
+            ),
+          ),
+          SizedBox(
+            width: itemWidth,
+            child: const _ImpactHighlight(
+              value: '10+',
+              label: 'redes atendidas',
+            ),
+          ),
+          SizedBox(
+            width: itemWidth,
+            child: const _ImpactHighlight(
+              value: '3',
+              label: 'sistemas unificados',
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+class _ImpactHighlight extends StatelessWidget {
+  const _ImpactHighlight({required this.value, required this.label});
+
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        value,
+        style: context.headlineSmall?.copyWith(
+          color: context.primaryColor,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+      const SizedBox(height: 2),
+      Text(
+        label,
+        style: context.bodySmall?.copyWith(
+          color: context.onSurfaceVariantColor,
+        ),
+      ),
+    ],
+  );
 }

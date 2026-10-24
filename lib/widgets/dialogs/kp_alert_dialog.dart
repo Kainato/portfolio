@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 
-/// Material Design 3 Alert Dialog component
+/// Diálogo de alerta Material 3 com conteúdo e ações configuráveis.
 ///
-/// Componente de diálogo de alerta seguindo os padrões do Material Design
-/// fornecido pelo Google. Suporta título, conteúdo, ícone customizado e
-/// botões de ação configuráveis.
+/// Parâmetros:
+/// - `title`: título opcional mostrado no diálogo.
+/// - `content`: mensagem opcional apresentada ao usuário.
+/// - `icon`: ícone opcional exibido acima do título.
+/// - `iconColor`: cor opcional aplicada ao ícone.
+/// - `confirmLabel`: texto do botão de confirmação.
+/// - `cancelLabel`: texto do botão de cancelamento.
+/// - `onConfirm`: ação executada após confirmar.
+/// - `onCancel`: ação executada após cancelar.
+/// - `barrierDismissible`: permite fechar o diálogo tocando fora dele.
+/// - `showCancelButton`: controla se o botão de cancelamento é exibido.
 class KpAlertDialog extends StatelessWidget {
   /// Título do diálogo
   final String? title;

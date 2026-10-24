@@ -5,6 +5,12 @@ import '../../core/extension/context_extension.dart';
 import '../../core/routes/kp_routes.dart';
 import '../drawer/kp_drawer.dart';
 
+/// Estrutura visual das páginas com app bar e drawer para telas pequenas.
+///
+/// Parâmetros:
+/// - `body`: conteúdo principal exibido abaixo da barra.
+/// - `route`: rota atual repassada aos componentes de navegação.
+/// - `onSectionTap`: callback para navegar até uma seção da página.
 class KpScaffold extends StatelessWidget {
   /// O corpo do scaffold.
   final Widget? body;

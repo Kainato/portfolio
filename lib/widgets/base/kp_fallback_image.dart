@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-/// Renderiza um asset de imagem com indicador de carregamento e ícone de fallback em caso de erro.
+/// Exibe uma imagem local, um indicador durante o carregamento e um ícone se falhar.
+///
+/// Parâmetros:
+/// - `assetPath`: caminho do asset que será carregado.
+/// - `width`: largura da imagem e do fallback.
+/// - `height`: altura da imagem e do fallback.
+/// - `fit`: regra de ajuste da imagem no espaço disponível.
+/// - `fallbackIcon`: ícone exibido quando a imagem não puder ser carregada.
 class KpFallbackImage extends StatelessWidget {
   final String assetPath;
   final double? width;
@@ -36,7 +43,11 @@ class KpFallbackImage extends StatelessWidget {
         width: width,
         height: height,
         child: Center(
-          child: Icon(fallbackIcon, size: 48, color: Colors.white24),
+          child: Icon(
+            fallbackIcon,
+            size: 48,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
         ),
       ),
     );

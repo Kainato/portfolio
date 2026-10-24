@@ -5,7 +5,13 @@ import '../../core/extension/context_extension.dart';
 import '../../core/routes/kp_routes.dart';
 import '../../core/utils/kp_launcher.dart';
 import '../base/kp_appbar_action.dart';
+import '../base/theme_mode_menu.dart';
 
+/// Barra superior com identidade do portfólio, navegação desktop e controle de tema.
+///
+/// Parâmetros:
+/// - `currentRoute`: rota atual usada como contexto de navegação.
+/// - `onSectionTap`: callback executado ao selecionar uma seção interna.
 class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// A rota (página) atual exibida no app bar.
   final KpRoutes currentRoute;
@@ -29,6 +35,15 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
     final bool isMobile = context.isMobile;
 
     return AppBar(
+      leading: isMobile
+          ? Builder(
+              builder: (context) => IconButton(
+                tooltip: 'Abrir menu de navegação',
+                icon: const Icon(Icons.menu),
+                onPressed: Scaffold.of(context).openDrawer,
+              ),
+            )
+          : null,
       title: const Text('Caio Calado'),
       actions: [
         if (!isMobile) ...[
@@ -39,6 +54,8 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           const SizedBox(width: 8),
         ],
+        const ThemeModeMenu(),
+        const SizedBox(width: 8),
       ],
     );
   }

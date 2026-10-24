@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../core/extension/context_extension.dart';
 
+/// Controla a rolagem e o espaçamento responsivo das seções da página inicial.
+///
+/// Parâmetros: esta classe não recebe parâmetros.
 class HomeController {
   /// Controlador da página inicial, responsável por gerenciar a navegação entre seções.
   HomeController();

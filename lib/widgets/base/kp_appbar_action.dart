@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// Botão de navegação exibido para uma seção na barra superior.
+///
+/// Parâmetros:
+/// - `label`: texto visível no botão.
+/// - `onSectionTap`: ação executada quando o botão é acionado.
 class KpAppbarAction extends StatelessWidget {
   /// Rótulo da seção representada pelo botão de ação.
   final String label;

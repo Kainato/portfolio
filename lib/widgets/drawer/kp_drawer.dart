@@ -9,6 +9,11 @@ import '../../core/routes/kp_routes.dart';
 import '../../core/routes/navigation_config.dart';
 import '../../core/utils/kp_launcher.dart';
 
+/// Menu lateral com navegação principal, contatos e acesso às opções de tema.
+///
+/// Parâmetros:
+/// - `route`: rota atual da página que contém o menu.
+/// - `onSectionTap`: callback para navegar até uma seção interna.
 class KpDrawer extends StatelessWidget {
   /// A página (rota) atual exibida no drawer.
   final KpRoutes route;
@@ -16,11 +21,6 @@ class KpDrawer extends StatelessWidget {
   /// Callback acionado quando uma seção é tocada no drawer.
   final void Function(String sectionId)? onSectionTap;
 
-  /// `KpDrawer` é um widget de drawer personalizado que exibe seções de navegação e links de contato.
-  ///
-  /// ### Parâmetros
-  /// - `route`: A página (rota) atual.
-  /// - `onSectionTap`: Callback acionado quando uma seção é tocada.
   const KpDrawer({super.key, required this.route, this.onSectionTap});
 
   @override
@@ -57,7 +57,6 @@ class KpDrawer extends StatelessWidget {
                   openExternalUrl(context, link.url);
                 },
               ),
-            const SizedBox(height: 12),
           ],
         ),
       ),

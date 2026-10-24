@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Atalhos de tamanho, tipografia e cores do tema para widgets Flutter.
 extension ContextExtension on BuildContext {
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // ! MediaQuery

@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/data/contact_link.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
+import 'package:kainato_portfolio/core/theme/app_text_styles.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 
+import '../../../core/data/portfolio_data.dart';
+
+/// Exibe os canais de contato do portfólio.
+///
+/// Parâmetros: esta seção não recebe parâmetros.
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 90),
+      margin: EdgeInsets.only(top: context.isMobile ? 40 : 90),
       padding: EdgeInsets.symmetric(
         horizontal: context.isMobile ? 20 : 32,
         vertical: 70,
@@ -24,19 +30,14 @@ class ContactSection extends StatelessWidget {
             children: [
               Text(
                 'VAMOS CONVERSAR?',
-                style: TextStyle(
-                  color: context.primaryColor,
-                  letterSpacing: 2,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTextStyles.sectionTitle(
+                  context,
+                ).copyWith(color: context.primaryColor, letterSpacing: 2),
               ),
               const SizedBox(height: 14),
               Text(
                 'Tem um projeto interessante?',
-                style: TextStyle(
-                  fontSize: context.isMobile ? 28 : 38,
-                  fontWeight: FontWeight.w800,
-                ),
+                style: AppTextStyles.subtitle(context),
               ),
               const SizedBox(height: 30),
               Wrap(
@@ -47,6 +48,16 @@ class ContactSection extends StatelessWidget {
                     _ContactChip(link: link),
                 ],
               ),
+              const SizedBox(height: 70),
+              Center(
+                child: Text(
+                  '© 2026 ${PortfolioData.name} • Flutter Developer',
+                  style: TextStyle(
+                    color: context.onSurfaceVariantColor,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -55,6 +66,10 @@ class ContactSection extends StatelessWidget {
   }
 }
 
+/// Item clicável que apresenta um canal de contato e abre seu endereço.
+///
+/// Parâmetros:
+/// - `link`: dados do canal, incluindo rótulo, endereço e ícone.
 class _ContactChip extends StatelessWidget {
   final ContactLink link;
   const _ContactChip({required this.link});

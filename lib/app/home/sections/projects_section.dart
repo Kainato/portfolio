@@ -5,6 +5,10 @@ import 'package:kainato_portfolio/core/models/portfolio_project.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 
+/// Lista os projetos e cases cadastrados no portfólio.
+///
+/// Parâmetros:
+/// - `sectionPadding`: espaçamento horizontal aplicado à seção.
 class ProjectsSection extends StatelessWidget {
   final EdgeInsets sectionPadding;
 
@@ -29,6 +33,10 @@ class ProjectsSection extends StatelessWidget {
   }
 }
 
+/// Cartão com as informações e o link de um projeto.
+///
+/// Parâmetros:
+/// - `project`: dados do projeto exibido no cartão.
 class _ProjectCard extends StatelessWidget {
   final PortfolioProject project;
   const _ProjectCard({required this.project});
@@ -64,17 +72,22 @@ class _ProjectCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 project.subtitle,
-                style: context.bodyLarge?.copyWith(color: Colors.white70),
+                style: context.bodyLarge?.copyWith(
+                  color: context.onSurfaceVariantColor,
+                ),
               ),
               const SizedBox(height: 18),
               Text(
                 project.stack,
-                style: const TextStyle(color: Color(0xFFB8A9FF)),
+                style: TextStyle(color: context.tertiaryColor),
               ),
               const SizedBox(height: 18),
               Text(
                 project.description,
-                style: const TextStyle(height: 1.5, color: Colors.white60),
+                style: context.bodyMedium?.copyWith(
+                  height: 1.5,
+                  color: context.onSurfaceVariantColor,
+                ),
               ),
               if (url != null) ...[
                 const SizedBox(height: 18),
