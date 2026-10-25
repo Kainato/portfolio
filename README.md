@@ -67,6 +67,7 @@ flutter run
 ```
 
 ## 📬 Contato
+
  * GitHub: @Kainato
  * LinkedIn: Perfil Profissional
  * E-mail: contato@example.com
