@@ -1,6 +1,6 @@
 # Meu Portifólio Profissional
 
-Este projeto é meu portifólio técnico que demonstra minhas principais qualidades profissionais,histórico e formas de trabalho diretamente via código Flutter
+Este projeto é meu portifólio técnico profissional que demonstra minhas principais qualidades profissionais,histórico e formas de trabalho diretamente via código Flutter
 
 ## 💻 Tecnologias Utilizadas
 
