@@ -2,12 +2,6 @@
 
 > Aplicativo de portfólio mobile desenvolvido em Flutter, projetado para apresentar experiências profissionais, projetos de destaque e competências técnicas com alta performance e fluidez.
 
-## 📱 Demonstração
-
-| Tela Inicial | Projetos | Detalhes / Contato |
-| :---: | :---: | :---: |
-| ![Home](https://via.placeholder.com/200x400.png?text=Home) | ![Projects](https://via.placeholder.com/200x400.png?text=Projetos) | ![Contact](https://via.placeholder.com/200x400.png?text=Contato) |
-
 ## 🎯 Sobre o Projeto
 
 Este repositório hospeda o código-fonte do portfólio pessoal em formato de aplicativo móvel. O objetivo é demonstrar na prática o domínio do framework Flutter, padrões arquiteturais modernos e boas práticas de desenvolvimento, servindo como uma vitrine interativa.
