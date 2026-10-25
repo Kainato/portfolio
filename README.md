@@ -56,7 +56,9 @@ cd portfolio
 
 #### 3. Instale as dependências
 
+```text
 flutter pub get
+```
 
 #### 4. Execute o aplicativo
 
