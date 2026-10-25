@@ -44,7 +44,9 @@ lib/
 
 #### 1. Clone o repositório
 
+```text
 git clone [https://github.com/Kainato/portfolio.git](https://github.com/Kainato/portfolio.git)
+```
 
 #### 2. Entre no diretório do projeto
 
