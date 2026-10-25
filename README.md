@@ -50,7 +50,9 @@ git clone [https://github.com/Kainato/portfolio.git](https://github.com/Kainato/
 
 #### 2. Entre no diretório do projeto
 
+```text
 cd portfolio
+```
 
 #### 3. Instale as dependências
 
