@@ -62,7 +62,9 @@ flutter pub get
 
 #### 4. Execute o aplicativo
 
+```text
 flutter run
+```
 
 ## 📬 Contato
  * GitHub: @Kainato
