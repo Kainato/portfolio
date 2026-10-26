@@ -14,6 +14,8 @@ import 'package:kainato_portfolio/core/extension/context_extension.dart';
 /// - `onCancel`: ação executada após cancelar.
 /// - `barrierDismissible`: permite fechar o diálogo tocando fora dele.
 /// - `showCancelButton`: controla se o botão de cancelamento é exibido.
+/// - `size`: largura e altura opcionais do diálogo. Por padrão, o Material
+///   define o tamanho conforme o conteúdo e o espaço disponível na tela.
 class KpAlertDialog extends StatelessWidget {
   /// Título do diálogo
   final String? title;
@@ -45,6 +47,9 @@ class KpAlertDialog extends StatelessWidget {
   /// Exibe o botão de cancelamento. Defina como `false` para diálogos apenas informativos.
   final bool showCancelButton;
 
+  /// Tamanho personalizado do diálogo. Valores nulos mantêm o tamanho padrão.
+  final Size? size;
+
   const KpAlertDialog({
     super.key,
     this.title,
@@ -57,35 +62,42 @@ class KpAlertDialog extends StatelessWidget {
     this.onCancel,
     this.barrierDismissible = true,
     this.showCancelButton = true,
+    this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      icon: icon != null
-          ? Icon(icon, color: iconColor ?? context.primaryColor, size: 32.0)
-          : null,
-      title: title != null ? Text(title!, style: context.headlineSmall) : null,
-      content: content != null
-          ? Text(content!, style: context.bodyMedium)
-          : null,
-      actions: [
-        if (showCancelButton)
-          TextButton(
+    return SizedBox(
+      width: size?.width,
+      height: size?.height,
+      child: AlertDialog(
+        icon: icon != null
+            ? Icon(icon, color: iconColor ?? context.primaryColor, size: 32.0)
+            : null,
+        title: title != null
+            ? Text(title!, style: context.headlineSmall)
+            : null,
+        content: content != null
+            ? Text(content!, style: context.bodyMedium)
+            : null,
+        actions: [
+          if (showCancelButton)
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                onCancel?.call();
+              },
+              child: Text(cancelLabel),
+            ),
+          FilledButton(
             onPressed: () {
               Navigator.of(context).pop();
-              onCancel?.call();
+              onConfirm?.call();
             },
-            child: Text(cancelLabel),
+            child: Text(confirmLabel),
           ),
-        FilledButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-            onConfirm?.call();
-          },
-          child: Text(confirmLabel),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -103,6 +115,7 @@ Future<void> showKpAlertDialog({
   VoidCallback? onCancel,
   bool barrierDismissible = true,
   bool showCancelButton = true,
+  Size? size,
 }) {
   return showDialog(
     context: context,
@@ -118,6 +131,7 @@ Future<void> showKpAlertDialog({
       onCancel: onCancel,
       barrierDismissible: barrierDismissible,
       showCancelButton: showCancelButton,
+      size: size,
     ),
   );
 }
