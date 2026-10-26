@@ -258,14 +258,24 @@ abstract final class PortfolioData {
   static const List<PortfolioProject> projects = [
     PortfolioProject(
       order: '01',
-      title: 'Teatech — Amigo Tech & Clínica Mundos',
+      title: 'Teatec — Amigo Tech & Clínica Mundos',
       subtitle:
           'Plataforma web para digitalizar processos e unificar sistemas da Clínica Mundos.',
       stack: 'Web • Laravel • Filament PHP',
       description:
           'Na atuação junto à Amigo Tech e à Clínica Mundos, colaborei no desenvolvimento da '
-          'Teatech, migrando processos em papel e centralizando 3 sistemas antigos em uma única '
+          'Teatec, migrando processos em papel e centralizando 3 sistemas antigos em uma única '
           'solução. A unificação acelerou a geração de relatórios e métricas da clínica.',
+      period: 'Nov/2024 – Mai/2026',
+      url:
+          'https://sites.google.com/view/portifolio-caio-calado/projetos/teatec-amigo-tech',
+      tags: ['Laravel', 'Filament PHP', 'Web', 'Digitalização de processos'],
+      challenge:
+          'Processos em papel e informações distribuídas em três sistemas antigos dificultavam a operação e a geração de relatórios.',
+      solution:
+          'Colaboração no desenvolvimento de uma plataforma web que centralizou os sistemas e digitalizou os processos da clínica.',
+      impact:
+          'A centralização acelerou a geração de relatórios e métricas para a Clínica Mundos.',
     ),
     PortfolioProject(
       order: '02',
@@ -286,6 +296,16 @@ abstract final class PortfolioData {
           'Construção e manutenção da plataforma principal da startup para mobile e web, usada '
           'diariamente por mais de 10 redes de clínicas e suas filiais. Arquitetura reativa com '
           'MobX e Provider, integração com APIs REST e publicação nas lojas Google Play e App Store.',
+      period: 'Fev/2020 – Nov/2024',
+      url:
+          'https://sites.google.com/view/portifolio-caio-calado/projetos/tita-therapy',
+      tags: ['Flutter', 'Dart', 'MobX', 'Provider', 'REST API', 'Figma'],
+      challenge:
+          'Manter uma plataforma de atendimento usada diariamente por múltiplas redes de clínicas em dispositivos móveis e web.',
+      solution:
+          'Construção e manutenção do produto cross-platform em Flutter, com arquitetura reativa, integração REST e rotinas de publicação nas lojas.',
+      impact:
+          'A plataforma atendia mais de 10 redes de clínicas e suas filiais.',
     ),
     PortfolioProject(
       order: '04',
