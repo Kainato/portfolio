@@ -110,12 +110,15 @@ class _ProjectCardState extends State<_ProjectCard> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    const SizedBox(width: 12),
                     if (project.period != null)
-                      Text(
-                        project.period!,
-                        style: context.bodySmall?.copyWith(
-                          color: context.onSurfaceVariantColor,
+                      Expanded(
+                        child: Text(
+                          project.period!,
+                          textAlign: TextAlign.end,
+                          style: context.bodySmall?.copyWith(
+                            color: context.onSurfaceVariantColor,
+                          ),
                         ),
                       ),
                   ],
