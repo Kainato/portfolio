@@ -3,6 +3,7 @@ import 'package:kainato_portfolio/core/data/portfolio_data.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/models/portfolio_project.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
+import 'package:kainato_portfolio/widgets/dialogs/kp_alert_dialog.dart';
 
 /// Lista os projetos e cases cadastrados no portfólio.
 ///
@@ -218,47 +219,46 @@ class _TechTag extends StatelessWidget {
 }
 
 Future<void> _showDetails(BuildContext context, PortfolioProject project) {
-  return showDialog<void>(
+  final screenSize = MediaQuery.sizeOf(context);
+  return showKpAlertDialog(
     context: context,
-    builder: (dialogContext) => AlertDialog(
-      title: Text(project.title),
-      content: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (project.period != null) ...[
-              Text(
-                project.period!,
-                style: Theme.of(dialogContext).textTheme.labelLarge,
-              ),
-              const SizedBox(height: 18),
-            ],
-            _DetailBlock(
-              title: 'Contexto e desafio',
-              body: project.challenge ?? project.subtitle,
+    title: project.title,
+    contentWidget: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (project.period != null) ...[
+            Text(
+              project.period!,
+              style: Theme.of(context).textTheme.labelLarge,
             ),
-            _DetailBlock(
-              title: 'Solução',
-              body: project.solution ?? project.description,
-            ),
-            if (project.impact != null)
-              _DetailBlock(title: 'Impacto', body: project.impact!),
-            _DetailBlock(
-              title: 'Tecnologias',
-              body: project.tags.isEmpty
-                  ? project.stack
-                  : project.tags.join(' • '),
-            ),
+            const SizedBox(height: 18),
           ],
-        ),
+          _DetailBlock(
+            title: 'Contexto e desafio',
+            body: project.challenge ?? project.subtitle,
+          ),
+          _DetailBlock(
+            title: 'Solução',
+            body: project.solution ?? project.description,
+          ),
+          if (project.impact != null)
+            _DetailBlock(title: 'Impacto', body: project.impact!),
+          _DetailBlock(
+            title: 'Tecnologias',
+            body: project.tags.isEmpty
+                ? project.stack
+                : project.tags.join(' • '),
+          ),
+        ],
       ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.of(dialogContext).pop(),
-          child: const Text('Fechar'),
-        ),
-      ],
+    ),
+    confirmLabel: 'Fechar',
+    showCancelButton: false,
+    size: Size(
+      screenSize.width < 640 ? screenSize.width * 0.9 : 640,
+      screenSize.height * 0.78,
     ),
   );
 }
