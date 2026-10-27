@@ -13,7 +13,14 @@ class PortfolioProject {
   final String subtitle;
   final String stack;
   final String description;
+  final String? period;
   final String? url;
+  final String? repositoryUrl;
+  final String? demoUrl;
+  final List<String> tags;
+  final String? challenge;
+  final String? solution;
+  final String? impact;
 
   const PortfolioProject({
     required this.order,
@@ -21,6 +28,13 @@ class PortfolioProject {
     required this.subtitle,
     required this.stack,
     required this.description,
+    this.period,
     this.url,
+    this.repositoryUrl,
+    this.demoUrl,
+    this.tags = const [],
+    this.challenge,
+    this.solution,
+    this.impact,
   });
 }
