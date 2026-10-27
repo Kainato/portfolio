@@ -74,7 +74,7 @@ class KpAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       constraints: BoxConstraints(
-        minWidth: 280,
+        minWidth: (size?.width ?? 280).clamp(0.0, 280.0).toDouble(),
         maxWidth: size?.width ?? double.infinity,
         maxHeight: size?.height ?? double.infinity,
       ),
