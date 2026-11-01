@@ -71,6 +71,3 @@ flutter run
  * GitHub: [@Kainato](https://github.com/Kainato)
  * LinkedIn: [Caio Calado](http://linkedin.com/in/kainato/)
  * E-mail: [caiocaladaraujo@gmail.com](mailto:caiocaladaraujo@gmail.com)
-
-
-
