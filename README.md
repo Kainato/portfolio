@@ -29,8 +29,8 @@ lib/
 
  * Framework: Flutter (Dart)
  * Gerenciamento de Estado: MobX / Provider
- * Injeção de Dependências: GetIt
- * Navegação: GoRouter
+ * Injeção de Dependências: (a listar)
+ * Navegação: (a listar)
  * Utilitários: url_launcher, flutter_svg
 
 ## ⚙️ Como Executar o Projeto
@@ -38,7 +38,7 @@ lib/
 ### Pré-requisitos
 
  * Flutter SDK instalado (versão 3.19 ou superior)
- * Emulador Android/iOS ou dispositivo físico configurado.
+ * Emulador ou dispositivo físico configurado.
 
 ### Passo a Passo
 
