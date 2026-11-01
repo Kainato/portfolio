@@ -69,5 +69,8 @@ flutter run
 ## 📬 Contato
 
  * GitHub: @Kainato
- * LinkedIn: Perfil Profissional
+ * LinkedIn: [Caio Calado](http://linkedin.com/in/kainato/)
  * E-mail: contato@example.com
+
+
+
