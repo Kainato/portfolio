@@ -1,6 +1,6 @@
 # 📱 Flutter Portfolio | Caio Calado
 
-> Aplicativo de portfólio mobile desenvolvido em Flutter, projetado para apresentar experiências profissionais, projetos de destaque e competências técnicas com alta performance e fluidez.
+Aplicativo de portfólio mobile desenvolvido em Flutter, projetado para apresentar experiências profissionais, projetos de destaque e competências técnicas com alta performance e fluidez.
 
 ## 🎯 Sobre o Projeto
 
