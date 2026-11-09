@@ -8,8 +8,8 @@ Este repositório hospeda o código-fonte do portfólio pessoal em formato de ap
 
 ## ✨ Principais Funcionalidades
 
-* 📂 **Vitrine de Projetos:** Listagem detalhada de aplicações desenvolvidas com links diretos para repositórios e demonstrações.
 * 👨‍💻 **Timeline Profissional:** Histórico de carreira detalhando experiências em desenvolvimento mobile e liderança técnica.
+* 📂 **Vitrine de Projetos:** Listagem detalhada de aplicações desenvolvidas com links diretos para repositórios e demonstrações.
 * 🎨 **Tema Dinâmico:** Suporte nativo a modo claro e escuro adaptado às preferências do sistema.
 * 🔗 **Integração com Contatos:** Atalhos rápidos para redes profissionais e canais de comunicação.
 
