@@ -1,4 +1,4 @@
-# 📱 Portfólio Dev | Caio Calado
+# 🛜 Portfólio Dev | Caio Calado
 
 Aplicativo de portfólio desenvolvido em Flutter, projetado para apresentar experiências profissionais, projetos de destaque e competências técnicas com alta performance e fluidez.
 
