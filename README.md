@@ -33,39 +33,6 @@ lib/
  * Navegação: (a listar)
  * Utilitários: url_launcher, flutter_svg
 
-## ⚙️ Como Executar o Projeto
-
-### Pré-requisitos
-
- * Flutter SDK instalado (versão 3.19 ou superior)
- * Emulador ou dispositivo físico configurado.
-
-### Passo a Passo
-
-#### 1. Clone o repositório
-
-```text
-git clone [https://github.com/Kainato/portfolio.git](https://github.com/Kainato/portfolio.git)
-```
-
-#### 2. Entre no diretório do projeto
-
-```text
-cd portfolio
-```
-
-#### 3. Instale as dependências
-
-```text
-flutter pub get
-```
-
-#### 4. Execute o aplicativo
-
-```text
-flutter run
-```
-
 ## 📬 Contato
 
  * GitHub: [@Kainato](https://github.com/Kainato)
