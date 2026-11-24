@@ -10,6 +10,7 @@ import 'sections/contact_section.dart';
 import 'sections/hero_section.dart';
 import 'sections/projects_section.dart';
 import 'sections/skills_section.dart';
+import '../../core/localization/app_language.dart';
 
 /// Página inicial que reúne as seções do portfólio em uma lista rolável.
 ///
@@ -46,9 +47,9 @@ class _HomePageState extends State<HomePage> {
             child: const SizedBox.shrink(),
           ),
           KpIntro(
-            title: 'SOBRE MIM',
+            title: tr('SOBRE MIM'),
             content:
-                '"A arte de fazer o complexo parecer fácil no primeiro clique"',
+                tr('"A arte de fazer o complexo parecer fácil no primeiro clique"'),
             italicContent: true,
           ).buildSliver(context),
           SliverToBoxAdapter(
@@ -63,9 +64,9 @@ class _HomePageState extends State<HomePage> {
             child: const SizedBox.shrink(),
           ),
           KpIntro(
-            title: 'HABILIDADES',
+            title: tr('HABILIDADES'),
             content:
-                'Tecnologias, linguagens, frameworks e ferramentas que domino e utilizo no dia a dia.',
+                tr('Tecnologias, linguagens, frameworks e ferramentas que domino e utilizo no dia a dia.'),
           ).buildSliver(context),
           SliverToBoxAdapter(
             child: ScrollReveal(
@@ -79,9 +80,9 @@ class _HomePageState extends State<HomePage> {
             child: const SizedBox.shrink(),
           ),
           KpIntro(
-            title: 'PROJETOS',
+            title: tr('PROJETOS'),
             content:
-                'Cases apresentados pelo problema, processo, decisões e resultado — não apenas pelo código.',
+                tr('Cases apresentados pelo problema, processo, decisões e resultado — não apenas pelo código.'),
           ).buildSliver(context),
           SliverToBoxAdapter(
             child: ScrollReveal(
