@@ -8,6 +8,7 @@ import '../../core/extension/text_extension.dart';
 import '../../core/routes/kp_routes.dart';
 import '../../core/routes/navigation_config.dart';
 import '../../core/utils/kp_launcher.dart';
+import '../../core/localization/app_language.dart';
 
 /// Menu lateral com navegação principal, contatos e acesso às opções de tema.
 ///
@@ -38,12 +39,12 @@ class KpDrawer extends StatelessWidget {
               KpDrawerListTile(
                 semanticLabel: item.semanticLabel,
                 selected: false,
-                label: item.label,
+                label: tr(item.label),
                 icon: item.icon,
                 onTap: () => _handleItemTap(context, item),
               ),
             const Divider(),
-            Text("Conecte-se Comigo", style: context.titleMedium).padding(
+            Text(tr("Conecte-se Comigo"), style: context.titleMedium).padding(
               const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             ),
             for (final link in ContactLink.contactLinks)

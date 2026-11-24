@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/localization/app_language.dart';
 
 /// Botão de navegação exibido para uma seção na barra superior.
 ///
@@ -27,7 +28,7 @@ class KpAppbarAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
-      label: 'Ir para a seção $label',
+      label: tr('Ir para a seção $label'),
       child: TextButton(
         style: TextButton.styleFrom(
           enabledMouseCursor: SystemMouseCursors.click,

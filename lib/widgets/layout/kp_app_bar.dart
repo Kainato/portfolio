@@ -6,6 +6,7 @@ import '../../core/routes/kp_routes.dart';
 import '../../core/utils/kp_launcher.dart';
 import '../base/kp_appbar_action.dart';
 import '../base/theme_mode_menu.dart';
+import '../../core/localization/app_language.dart';
 
 /// Barra superior com identidade do portfólio, navegação desktop e controle de tema.
 ///
@@ -38,7 +39,7 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isMobile
           ? Builder(
               builder: (context) => IconButton(
-                tooltip: 'Abrir menu de navegação',
+                tooltip: tr('Abrir menu de navegação'),
                 icon: const Icon(Icons.menu),
                 onPressed: Scaffold.of(context).openDrawer,
               ),
@@ -49,12 +50,22 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (!isMobile) ...[
           for (final item in NavigationConfig.mainItems)
             KpAppbarAction(
-              label: item.label,
+              label: tr(item.label),
               onSectionTap: () => _handleSectionTap(context, item),
             ),
           const SizedBox(width: 8),
         ],
         const ThemeModeMenu(),
+        PopupMenuButton<AppLanguage>(
+          tooltip: tr('Selecionar idioma'),
+          icon: const Icon(Icons.language),
+          initialValue: AppLanguageController.instance.language,
+          onSelected: AppLanguageController.instance.setLanguage,
+          itemBuilder: (context) => [
+            const PopupMenuItem(value: AppLanguage.ptBr, child: Text('Português (Brasil)')),
+            const PopupMenuItem(value: AppLanguage.enUs, child: Text('Inglês (EUA)')),
+          ],
+        ),
         const SizedBox(width: 8),
       ],
     );
