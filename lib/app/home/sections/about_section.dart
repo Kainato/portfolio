@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/theme/app_text_styles.dart';
+import '../../../core/localization/app_language.dart';
 
 /// Apresenta o resumo profissional e indicadores de impacto.
 ///
@@ -43,21 +44,21 @@ class _AboutProfile extends StatelessWidget {
           TextSpan(
             style: AppTextStyles.body(context),
             children: [
-              const TextSpan(text: 'Sou desenvolvedor Flutter Sênior, com '),
-              TextSpan(text: 'mais de 6 anos de experiência', style: emphasis),
-              const TextSpan(
+              TextSpan(text: tr('Sou desenvolvedor Flutter Sênior, com ')),
+              TextSpan(text: tr('mais de 6 anos de experiência'), style: emphasis),
+              TextSpan(
                 text:
-                    ' criando aplicações mobile e web. Na TiTa Therapy, construí e mantive uma plataforma usada diariamente por ',
+                    tr(' criando aplicações mobile e web. Na TiTa Therapy, construí e mantive uma plataforma usada diariamente por '),
               ),
-              TextSpan(text: 'mais de 10 redes de clínicas', style: emphasis),
-              const TextSpan(
+              TextSpan(text: tr('mais de 10 redes de clínicas'), style: emphasis),
+              TextSpan(
                 text:
-                    '. Na Amigo Tech / Clínica Mundos, colaborei com a Teatech para digitalizar processos e unificar ',
+                    tr('. Na Amigo Tech / Clínica Mundos, colaborei com a Teatech para digitalizar processos e unificar '),
               ),
-              TextSpan(text: '3 sistemas legados', style: emphasis),
-              const TextSpan(
+              TextSpan(text: tr('3 sistemas legados'), style: emphasis),
+              TextSpan(
                 text:
-                    '. Também trabalho com arquitetura reativa, integração via APIs REST, publicação nas lojas e gestão ágil de projetos.',
+                    tr('. Também trabalho com arquitetura reativa, integração via APIs REST, publicação nas lojas e gestão ágil de projetos.'),
               ),
             ],
           ),
