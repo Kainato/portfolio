@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/routes/kp_routes.dart';
 import 'package:kainato_portfolio/core/theme/app_theme.dart';
 import 'package:kainato_portfolio/core/theme/theme_mode_controller.dart';
+import 'package:kainato_portfolio/core/localization/app_language.dart';
 
 import 'app/home/home_page.dart';
 
@@ -22,7 +23,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-    animation: ThemeModeController.instance,
+    animation: Listenable.merge([ThemeModeController.instance, AppLanguageController.instance]),
     builder: (context, _) => MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Caio Calado — Flutter Developer',
