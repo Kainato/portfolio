@@ -6,6 +6,7 @@ import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 
 import '../../../core/data/portfolio_data.dart';
+import '../../../core/localization/app_language.dart';
 
 /// Exibe os canais de contato do portfólio.
 ///
@@ -29,14 +30,14 @@ class ContactSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'VAMOS CONVERSAR?',
+                tr('VAMOS CONVERSAR?'),
                 style: AppTextStyles.sectionTitle(
                   context,
                 ).copyWith(color: context.primaryColor, letterSpacing: 2),
               ),
               const SizedBox(height: 14),
               Text(
-                'Tem um projeto interessante?',
+                tr('Tem um projeto interessante?'),
                 style: AppTextStyles.subtitle(context),
               ),
               const SizedBox(height: 30),
@@ -77,7 +78,7 @@ class _ContactChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionTile(
-      semanticLabel: 'Abrir ${link.label}: ${link.value}',
+      semanticLabel: '${tr('Abrir ')}${tr(link.label)}: ${link.value}',
       onTap: () => openExternalUrl(context, link.url),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
