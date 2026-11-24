@@ -5,6 +5,7 @@ import 'package:kainato_portfolio/core/enum/assets.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/kp_fallback_image.dart';
+import '../../../core/localization/app_language.dart';
 
 /// Apresenta a introdução, a foto em telas grandes, o avatar mobile e atalhos.
 ///
@@ -38,7 +39,7 @@ class HeroSection extends StatelessWidget {
         ],
         if (!isMobile) ...[
           Text(
-            PortfolioData.tagline,
+            tr(PortfolioData.tagline),
             style: TextStyle(
               letterSpacing: 1.8,
               color: context.primaryColor,
@@ -48,7 +49,7 @@ class HeroSection extends StatelessWidget {
           const SizedBox(height: 18),
         ],
         Text(
-          'Transformo processos complexos em produtos digitais simples de usar.',
+          tr('Transformo processos complexos em produtos digitais simples de usar.'),
           style: context.displayLarge?.copyWith(
             fontWeight: FontWeight.w800,
             height: isMobile ? 1.08 : 1.03,
@@ -59,7 +60,7 @@ class HeroSection extends StatelessWidget {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 620),
           child: Text(
-            PortfolioData.heroDescription,
+            tr(PortfolioData.heroDescription),
             style: context.bodyLarge?.copyWith(
               fontSize: isMobile ? 18 : 20,
               height: 1.5,
@@ -73,13 +74,13 @@ class HeroSection extends StatelessWidget {
           children: [
             Semantics(
               button: true,
-              label: 'Ver mais e ir para a seção de projetos',
+              label: tr('Ver mais e ir para a seção de projetos'),
               child: FilledButton(
                 onPressed: onProjectsTap,
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('Ver projetos'),
+                    Text(tr('Ver projetos')),
                     SizedBox(width: 8),
                     Icon(Icons.expand_more_rounded, size: 20),
                   ],
@@ -88,7 +89,7 @@ class HeroSection extends StatelessWidget {
             ),
             Semantics(
               button: true,
-              label: 'Abrir perfil no GitHub em uma nova aba',
+              label: tr('Abrir perfil no GitHub em uma nova aba'),
               child: OutlinedButton.icon(
                 onPressed: () =>
                     openExternalUrl(context, 'https://github.com/Kainato'),
@@ -98,7 +99,7 @@ class HeroSection extends StatelessWidget {
             ),
             Semantics(
               button: true,
-              label: 'Abrir perfil no LinkedIn em uma nova aba',
+              label: tr('Abrir perfil no LinkedIn em uma nova aba'),
               child: OutlinedButton.icon(
                 onPressed: () => openExternalUrl(
                   context,
@@ -195,7 +196,7 @@ class _Portrait extends StatelessWidget {
     final height = isDesktop ? 380.0 : 120.0;
 
     return Semantics(
-      label: 'Foto de Caio Calado de Araújo',
+      label: tr('Foto de Caio Calado de Araújo'),
       image: true,
       child: Container(
         width: width,
@@ -242,21 +243,21 @@ class _ImpactHighlights extends StatelessWidget {
             width: itemWidth,
             child: const _ImpactHighlight(
               value: '6+',
-              label: 'anos com Flutter',
+              label: tr('anos com Flutter'),
             ),
           ),
           SizedBox(
             width: itemWidth,
             child: const _ImpactHighlight(
               value: '10+',
-              label: 'redes atendidas',
+              label: tr('redes atendidas'),
             ),
           ),
           SizedBox(
             width: itemWidth,
             child: const _ImpactHighlight(
               value: '3',
-              label: 'sistemas unificados',
+              label: tr('sistemas unificados'),
             ),
           ),
         ],
