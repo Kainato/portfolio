@@ -1,0 +1,52 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Caio Calado — Desenvolvedor Flutter</title>
+  <description
+    id="description"
+  >Monograma C combinado ao prompt de terminal maior que e sublinhado.</description>
+  <defs>
+    <linearGradient
+      id="logo-bg"
+      x1="72"
+      y1="40"
+      x2="440"
+      y2="472"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#102147" />
+      <stop offset="1" stop-color="#09101F" />
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#logo-bg)" />
+
+  <!-- C técnico, com formas espessas para continuar legível em favicon -->
+  <path
+    d="M350 158C322 132 289 118 252 118C172 118 112 178 112 256C112 334 172 394 252 394C289 394 322 380 350 354"
+    fill="none"
+    stroke="#70E8FF"
+    stroke-width="44"
+    stroke-linecap="round"
+  />
+
+  <!-- Prompt de terminal >_ -->
+  <path
+    d="M246 224L300 256L246 288"
+    fill="none"
+    stroke="#EAFBFF"
+    stroke-width="28"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M314 314H380"
+    fill="none"
+    stroke="#EAFBFF"
+    stroke-width="28"
+    stroke-linecap="round"
+  />
+</svg>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Opções de logo — Caio Calado</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --cyan: #70e8ff;
+        --bg: #09101f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, sans-serif;
+        background: #edf2f7;
+        color: #101827;
+      }
+      main {
+        max-width: 1180px;
+        margin: auto;
+        padding: 48px 24px;
+      }
+      h1 {
+        margin: 0 0 8px;
+      }
+      .intro {
+        margin: 0 0 36px;
+        color: #526172;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .card {
+        border-radius: 20px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 12px 36px rgba(9, 16, 31, 0.12);
+      }
+      .preview {
+        min-height: 360px;
+        display: grid;
+        place-items: center;
+        padding: 28px;
+        background: var(--bg);
+      }
+      .preview.wordmark {
+        background: #e6edf5;
+      }
+      .preview img {
+        max-width: 100%;
+        max-height: 300px;
+      }
+      .preview.wordmark img {
+        width: 100%;
+      }
+      .meta {
+        padding: 20px 22px 24px;
+      }
+      .meta h2 {
+        margin: 0 0 8px;
+      }
+      .meta p {
+        margin: 0;
+        color: #526172;
+      }
+      .sizes {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 18px;
+      }
+      .sizes img {
+        width: 32px;
+        height: 32px;
+      }
+      .sizes img:nth-child(2) {
+        width: 64px;
+        height: 64px;
+      }
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Opções de logo</h1>
+      <p class="intro">Compare o símbolo compacto e o wordmark horizontal.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="preview">
+            <img
+              src="logo-option-1.svg"
+              alt="Opção 1: monograma C com terminal"
+            />
+          </div>
+          <div class="meta">
+            <h2>Opção 1 — Monograma dev</h2>
+            <p>
+              Inicial C integrada ao prompt <strong>&gt;_</strong>. Melhor para
+              avatar, favicon e redes sociais.
+            </p>
+            <div class="sizes">
+              <span>Teste:</span
+              ><img src="logo-option-1.svg" alt="16 pixels" /><img
+                src="logo-option-1.svg"
+                alt="32 pixels"
+              />
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="preview wordmark">
+            <img src="logo-option-2.svg" alt="Opção 2: wordmark Caio Calado" />
+          </div>
+          <div class="meta">
+            <h2>Opção 2 — Wordmark</h2>
+            <p>
+              Nome completo em tipografia monoespaçada, com símbolo de terminal
+              separado. Melhor para README e cabeçalho.
+            </p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>

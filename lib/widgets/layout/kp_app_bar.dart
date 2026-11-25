@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../core/routes/navigation_config.dart';
 import '../../core/extension/context_extension.dart';
+import '../../core/localization/app_language.dart';
 import '../../core/routes/kp_routes.dart';
+import '../../core/routes/navigation_config.dart';
 import '../../core/utils/kp_launcher.dart';
 import '../base/kp_appbar_action.dart';
 import '../base/theme_mode_menu.dart';
-import '../../core/localization/app_language.dart';
 
 /// Barra superior com identidade do portfólio, navegação desktop e controle de tema.
 ///
@@ -45,7 +45,22 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             )
           : null,
-      title: const Text('Caio Calado'),
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 34,
+            height: 34,
+            margin: const EdgeInsets.only(right: 10),
+            decoration: BoxDecoration(
+              color: const Color(0xFF102147),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: const CustomPaint(painter: _LogoMarkPainter()),
+          ),
+          const Text('Caio Calado'),
+        ],
+      ),
       actions: [
         if (!isMobile) ...[
           for (final item in NavigationConfig.mainItems)
@@ -62,8 +77,14 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
           initialValue: AppLanguageController.instance.language,
           onSelected: AppLanguageController.instance.setLanguage,
           itemBuilder: (context) => [
-            const PopupMenuItem(value: AppLanguage.ptBr, child: Text('Português (Brasil)')),
-            const PopupMenuItem(value: AppLanguage.enUs, child: Text('Inglês (EUA)')),
+            const PopupMenuItem(
+              value: AppLanguage.ptBr,
+              child: Text('Português (Brasil)'),
+            ),
+            const PopupMenuItem(
+              value: AppLanguage.enUs,
+              child: Text('Inglês (EUA)'),
+            ),
           ],
         ),
         const SizedBox(width: 8),
@@ -81,4 +102,48 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _LogoMarkPainter extends CustomPainter {
+  const _LogoMarkPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final cPaint = Paint()
+      ..color = const Color(0xFF70E8FF)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.width * 0.12
+      ..strokeCap = StrokeCap.round;
+
+    final terminalPaint = Paint()
+      ..color = const Color(0xFFEAFBFF)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.width * 0.075
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+
+    final cRect = Rect.fromLTWH(
+      size.width * 0.14,
+      size.height * 0.12,
+      size.width * 0.72,
+      size.height * 0.76,
+    );
+    canvas.drawArc(cRect, 0.72, 4.7, false, cPaint);
+
+    canvas.drawPath(
+      Path()
+        ..moveTo(size.width * 0.43, size.height * 0.40)
+        ..lineTo(size.width * 0.58, size.height * 0.50)
+        ..lineTo(size.width * 0.43, size.height * 0.60),
+      terminalPaint,
+    );
+    canvas.drawLine(
+      Offset(size.width * 0.61, size.height * 0.70),
+      Offset(size.width * 0.77, size.height * 0.70),
+      terminalPaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
