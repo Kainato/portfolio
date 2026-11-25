@@ -3,11 +3,22 @@ import 'package:flutter/foundation.dart';
 enum AppLanguage { ptBr, enUs }
 
 class AppLanguageController extends ChangeNotifier {
-  AppLanguageController._();
+  AppLanguageController._() : _language = _resolveInitialLanguage();
   static final instance = AppLanguageController._();
-  AppLanguage _language = AppLanguage.ptBr;
+  AppLanguage _language;
   AppLanguage get language => _language;
   bool get isEnglish => _language == AppLanguage.enUs;
+
+  static AppLanguage _resolveInitialLanguage() {
+    for (final locale in PlatformDispatcher.instance.locales) {
+      final languageCode = locale.languageCode.toLowerCase();
+
+      if (languageCode == 'en') return AppLanguage.enUs;
+      if (languageCode == 'pt') return AppLanguage.ptBr;
+    }
+
+    return AppLanguage.ptBr;
+  }
 
   void setLanguage(AppLanguage language) {
     if (_language == language) return;

@@ -31,7 +31,7 @@ extension KpRoutesExtension on KpRoutes {
   WidgetBuilder get builder {
     switch (this) {
       case KpRoutes.home:
-        return (context) => const HomePage();
+        return (context) => HomePage();
     }
   }
 }

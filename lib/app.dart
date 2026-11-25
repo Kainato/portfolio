@@ -35,10 +35,10 @@ class MainApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeModeController.instance.mode,
-      home: const HomePage(),
+      home: HomePage(),
       // Deep links desconhecidos caem de volta na Home em vez de uma tela de erro.
       onUnknownRoute: (settings) =>
-          MaterialPageRoute(builder: (_) => const HomePage()),
+          MaterialPageRoute(builder: (_) => HomePage()),
     ),
   );
 }
