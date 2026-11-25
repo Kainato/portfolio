@@ -37,7 +37,7 @@ class KpDrawer extends StatelessWidget {
             ),
             for (final item in NavigationConfig.mainItems)
               KpDrawerListTile(
-                semanticLabel: item.semanticLabel,
+                semanticLabel: tr(item.semanticLabel),
                 selected: false,
                 label: tr(item.label),
                 icon: item.icon,
