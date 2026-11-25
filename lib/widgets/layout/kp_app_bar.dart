@@ -66,6 +66,7 @@ class KpAppBar extends StatelessWidget implements PreferredSizeWidget {
           for (final item in NavigationConfig.mainItems)
             KpAppbarAction(
               label: tr(item.label),
+              semanticLabel: item.semanticLabel,
               onSectionTap: () => _handleSectionTap(context, item),
             ),
           const SizedBox(width: 8),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/localization/app_language.dart';
 
 /// Botão de navegação exibido para uma seção na barra superior.
@@ -9,6 +10,9 @@ import '../../core/localization/app_language.dart';
 class KpAppbarAction extends StatelessWidget {
   /// Rótulo da seção representada pelo botão de ação.
   final String label;
+
+  /// Rótulo semântico de origem (em PT-BR) para lookup estável de tradução.
+  final String? semanticLabel;
 
   /// Callback acionado quando a seção é tocada.
   final VoidCallback onSectionTap;
@@ -21,6 +25,7 @@ class KpAppbarAction extends StatelessWidget {
   const KpAppbarAction({
     super.key,
     required this.label,
+    this.semanticLabel,
     required this.onSectionTap,
   });
 
@@ -28,7 +33,7 @@ class KpAppbarAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
-      label: tr('Ir para a seção $label'),
+      label: tr(semanticLabel ?? 'Ir para a seção $label'),
       child: TextButton(
         style: TextButton.styleFrom(
           enabledMouseCursor: SystemMouseCursors.click,

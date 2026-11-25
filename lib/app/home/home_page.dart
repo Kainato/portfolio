@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/app/home/home_controller.dart';
 
+import '../../core/localization/app_language.dart';
 import '../../core/routes/kp_routes.dart';
 import '../../widgets/base/kp_intro.dart';
 import '../../widgets/base/scroll_reveal.dart';
@@ -10,7 +11,6 @@ import 'sections/contact_section.dart';
 import 'sections/hero_section.dart';
 import 'sections/projects_section.dart';
 import 'sections/skills_section.dart';
-import '../../core/localization/app_language.dart';
 
 /// Página inicial que reúne as seções do portfólio em uma lista rolável.
 ///
@@ -48,8 +48,9 @@ class _HomePageState extends State<HomePage> {
           ),
           KpIntro(
             title: tr('SOBRE MIM'),
-            content:
-                tr('"A arte de fazer o complexo parecer fácil no primeiro clique"'),
+            content: tr(
+              '"A arte de fazer o complexo parecer fácil no primeiro clique"',
+            ),
             italicContent: true,
           ).buildSliver(context),
           SliverToBoxAdapter(
@@ -65,8 +66,9 @@ class _HomePageState extends State<HomePage> {
           ),
           KpIntro(
             title: tr('HABILIDADES'),
-            content:
-                tr('Tecnologias, linguagens, frameworks e ferramentas que domino e utilizo no dia a dia.'),
+            content: tr(
+              'Tecnologias, linguagens, frameworks e ferramentas que domino e utilizo no dia a dia.',
+            ),
           ).buildSliver(context),
           SliverToBoxAdapter(
             child: ScrollReveal(
@@ -81,8 +83,9 @@ class _HomePageState extends State<HomePage> {
           ),
           KpIntro(
             title: tr('PROJETOS'),
-            content:
-                tr('Cases apresentados pelo problema, processo, decisões e resultado — não apenas pelo código.'),
+            content: tr(
+              'Cases apresentados pelo problema, processo, decisões e resultado — não apenas pelo código.',
+            ),
           ).buildSliver(context),
           SliverToBoxAdapter(
             child: ScrollReveal(
@@ -93,7 +96,10 @@ class _HomePageState extends State<HomePage> {
           ),
           SliverToBoxAdapter(
             key: _controller.contatoKey,
-            child: const ScrollReveal(child: ContactSection()),
+            child: AnimatedBuilder(
+              animation: AppLanguageController.instance,
+              builder: (context, _) => ScrollReveal(child: ContactSection()),
+            ),
           ),
         ],
       ),

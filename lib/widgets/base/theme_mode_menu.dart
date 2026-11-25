@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/theme_mode_controller.dart';
 import '../../core/localization/app_language.dart';
+import '../../core/theme/theme_mode_controller.dart';
 
 /// Abre um menu explícito para selecionar a preferência de tema.
 ///
@@ -26,7 +26,10 @@ class ThemeModeMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-    animation: ThemeModeController.instance,
+    animation: Listenable.merge([
+      ThemeModeController.instance,
+      AppLanguageController.instance,
+    ]),
     builder: (context, _) {
       final mode = ThemeModeController.instance.mode;
       return Semantics(

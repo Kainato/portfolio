@@ -5,6 +5,7 @@ import 'package:kainato_portfolio/core/enum/assets.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/base/kp_fallback_image.dart';
+
 import '../../../core/localization/app_language.dart';
 
 /// Apresenta a introdução, a foto em telas grandes, o avatar mobile e atalhos.
@@ -49,7 +50,9 @@ class HeroSection extends StatelessWidget {
           const SizedBox(height: 18),
         ],
         Text(
-          tr('Transformo processos complexos em produtos digitais simples de usar.'),
+          tr(
+            'Transformo processos complexos em produtos digitais simples de usar.',
+          ),
           style: context.displayLarge?.copyWith(
             fontWeight: FontWeight.w800,
             height: isMobile ? 1.08 : 1.03,
@@ -112,7 +115,10 @@ class HeroSection extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 34),
-        const _ImpactHighlights(),
+        AnimatedBuilder(
+          animation: AppLanguageController.instance,
+          builder: (context, _) => _ImpactHighlights(),
+        ),
       ],
     );
 
@@ -155,7 +161,7 @@ class HeroSection extends StatelessWidget {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                PortfolioData.tagline,
+                                tr(PortfolioData.tagline),
                                 style: context.labelMedium?.copyWith(
                                   color: context.primaryColor,
                                   letterSpacing: 1.2,
@@ -241,17 +247,11 @@ class _ImpactHighlights extends StatelessWidget {
         children: [
           SizedBox(
             width: itemWidth,
-            child: _ImpactHighlight(
-              value: '6+',
-              label: tr('anos com Flutter'),
-            ),
+            child: _ImpactHighlight(value: '6+', label: tr('anos com Flutter')),
           ),
           SizedBox(
             width: itemWidth,
-            child: _ImpactHighlight(
-              value: '10+',
-              label: tr('redes atendidas'),
-            ),
+            child: _ImpactHighlight(value: '10+', label: tr('redes atendidas')),
           ),
           SizedBox(
             width: itemWidth,
