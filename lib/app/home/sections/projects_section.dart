@@ -251,9 +251,11 @@ Future<void> _showDetails(BuildContext context, PortfolioProject project) {
             _DetailBlock(title: tr('Impacto'), body: tr(project.impact!)),
           _DetailBlock(
             title: tr('Tecnologias'),
-            body: project.tags.isEmpty
-                ? project.stack
-                : project.tags.join(' • '),
+            body: (project.tags.isEmpty
+                    ? project.stack.split(' • ')
+                    : project.tags)
+                .map(tr)
+                .join(' • '),
           ),
         ],
       ),
