@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/localization/app_language.dart';
 import '../../core/theme/theme_mode_controller.dart';
 
 /// Abre um menu explícito para selecionar a preferência de tema.
@@ -12,9 +13,9 @@ class ThemeModeMenu extends StatelessWidget {
   final bool showLabel;
 
   static String labelFor(ThemeMode mode) => switch (mode) {
-    ThemeMode.light => 'Claro',
-    ThemeMode.dark => 'Escuro',
-    ThemeMode.system => 'Sistema',
+    ThemeMode.light => tr('Claro'),
+    ThemeMode.dark => tr('Escuro'),
+    ThemeMode.system => tr('Sistema'),
   };
 
   static IconData iconFor(ThemeMode mode) => switch (mode) {
@@ -25,22 +26,25 @@ class ThemeModeMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-    animation: ThemeModeController.instance,
+    animation: Listenable.merge([
+      ThemeModeController.instance,
+      AppLanguageController.instance,
+    ]),
     builder: (context, _) {
       final mode = ThemeModeController.instance.mode;
       return Semantics(
         button: true,
-        label: 'Tema atual: ${labelFor(mode)}',
-        hint: 'Abrir opções de tema',
+        label: '${tr('Tema atual: ')}${labelFor(mode)}',
+        hint: tr('Abrir opções de tema'),
         child: PopupMenuButton<ThemeMode>(
-          tooltip: 'Selecionar tema',
+          tooltip: tr('Selecionar tema'),
           initialValue: mode,
           onSelected: ThemeModeController.instance.setMode,
           icon: showLabel ? null : Icon(iconFor(mode)),
           child: showLabel
               ? ListTile(
                   leading: Icon(iconFor(mode)),
-                  title: const Text('Tema'),
+                  title: Text(tr('Tema')),
                   subtitle: Text(labelFor(mode)),
                   trailing: const Icon(Icons.expand_more),
                 )

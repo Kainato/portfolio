@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/localization/app_language.dart';
 
 import '../../core/models/skill.dart';
 import '../../core/utils/kp_launcher.dart';
@@ -24,7 +25,7 @@ class _SkillChipState extends State<SkillChip> {
     final skill = widget.skill;
     return Semantics(
       button: true,
-      label: 'Abrir referência sobre ${skill.name}',
+      label: '${tr('Abrir referência sobre ')}${skill.name}',
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (_) => setState(() => _hovering = true),

@@ -1,0 +1,83 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 360"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Caio Calado — Wordmark developer</title>
+  <description
+    id="description"
+  >Wordmark horizontal com nome em tipografia monoespaçada e símbolo de cursor Flutter.</description>
+  <defs>
+    <linearGradient
+      id="a2-bg"
+      x1="0"
+      y1="0"
+      x2="1200"
+      y2="360"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#102147" />
+      <stop offset="1" stop-color="#09101F" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="360" rx="72" fill="url(#a2-bg)" />
+
+  <!-- Símbolo de prompt integrado -->
+  <rect
+    x="48"
+    y="48"
+    width="264"
+    height="264"
+    rx="56"
+    fill="#162D59"
+    stroke="#264A7C"
+    stroke-width="3"
+  />
+  <path
+    d="M92 132L154 180L92 228"
+    fill="none"
+    stroke="#70E8FF"
+    stroke-width="28"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M174 228H238"
+    fill="none"
+    stroke="#EAFBFF"
+    stroke-width="28"
+    stroke-linecap="round"
+  />
+
+  <!-- Wordmark; no máximo duas famílias/tamanhos -->
+  <text
+    x="370"
+    y="180"
+    fill="#EAFBFF"
+    font-family="JetBrains Mono, Fira Code, Consolas, monospace"
+    font-size="112"
+    font-weight="700"
+    letter-spacing="-5"
+  >CAIO</text>
+  <text
+    x="370"
+    y="274"
+    fill="#70E8FF"
+    font-family="JetBrains Mono, Fira Code, Consolas, monospace"
+    font-size="72"
+    font-weight="700"
+    letter-spacing="10"
+  >CALADO</text>
+
+  <rect
+    x="370"
+    y="298"
+    width="730"
+    height="8"
+    rx="4"
+    fill="#00B7F0"
+    opacity=".9"
+  />
+  <rect x="1116" y="298" width="32" height="8" rx="4" fill="#70E8FF" />
+</svg>

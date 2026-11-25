@@ -4,6 +4,7 @@ import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/models/portfolio_project.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
 import 'package:kainato_portfolio/widgets/dialogs/kp_alert_dialog.dart';
+import '../../../core/localization/app_language.dart';
 
 /// Lista os projetos e cases cadastrados no portfólio.
 ///
@@ -114,7 +115,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                     if (project.period != null)
                       Expanded(
                         child: Text(
-                          project.period!,
+                          tr(project.period!),
                           textAlign: TextAlign.end,
                           style: context.bodySmall?.copyWith(
                             color: context.onSurfaceVariantColor,
@@ -125,14 +126,14 @@ class _ProjectCardState extends State<_ProjectCard> {
                 ),
                 const SizedBox(height: 18),
                 Text(
-                  project.title,
+                  tr(project.title),
                   style: context.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  project.subtitle,
+                  tr(project.subtitle),
                   style: context.bodyLarge?.copyWith(
                     color: context.onSurfaceVariantColor,
                   ),
@@ -145,12 +146,12 @@ class _ProjectCardState extends State<_ProjectCard> {
                       (project.tags.isEmpty
                               ? project.stack.split(' • ')
                               : project.tags)
-                          .map((tag) => _TechTag(label: tag))
+                          .map((tag) => _TechTag(label: tr(tag)))
                           .toList(),
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  project.description,
+                  tr(project.description),
                   style: context.bodyMedium?.copyWith(
                     height: 1.55,
                     color: context.onSurfaceVariantColor,
@@ -164,14 +165,14 @@ class _ProjectCardState extends State<_ProjectCard> {
                     OutlinedButton.icon(
                       onPressed: () => _showDetails(context, project),
                       icon: const Icon(Icons.article_outlined, size: 18),
-                      label: const Text('Ver detalhes'),
+                      label: Text(tr('Ver detalhes')),
                     ),
                     if (project.repositoryUrl != null)
                       TextButton.icon(
                         onPressed: () =>
                             openExternalUrl(context, project.repositoryUrl!),
                         icon: const Icon(Icons.code, size: 18),
-                        label: const Text('Repositório'),
+                        label: Text(tr('Repositório')),
                       ),
                     if (project.demoUrl != null)
                       TextButton.icon(
@@ -184,7 +185,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                       TextButton.icon(
                         onPressed: () => openExternalUrl(context, project.url!),
                         icon: const Icon(Icons.launch, size: 18),
-                        label: const Text('Ver case'),
+                        label: Text(tr('Ver case')),
                       ),
                   ],
                 ),
@@ -225,7 +226,7 @@ Future<void> _showDetails(BuildContext context, PortfolioProject project) {
   final screenSize = MediaQuery.sizeOf(context);
   return showKpAlertDialog(
     context: context,
-    title: project.title,
+    title: tr(project.title),
     contentWidget: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -233,31 +234,33 @@ Future<void> _showDetails(BuildContext context, PortfolioProject project) {
         children: [
           if (project.period != null) ...[
             Text(
-              project.period!,
+              tr(project.period!),
               style: Theme.of(context).textTheme.labelLarge,
             ),
             const SizedBox(height: 18),
           ],
           _DetailBlock(
-            title: 'Contexto e desafio',
-            body: project.challenge ?? project.subtitle,
+            title: tr('Contexto e desafio'),
+            body: tr(project.challenge ?? project.subtitle),
           ),
           _DetailBlock(
-            title: 'Solução',
-            body: project.solution ?? project.description,
+            title: tr('Solução'),
+            body: tr(project.solution ?? project.description),
           ),
           if (project.impact != null)
-            _DetailBlock(title: 'Impacto', body: project.impact!),
+            _DetailBlock(title: tr('Impacto'), body: tr(project.impact!)),
           _DetailBlock(
-            title: 'Tecnologias',
-            body: project.tags.isEmpty
-                ? project.stack
-                : project.tags.join(' • '),
+            title: tr('Tecnologias'),
+            body: (project.tags.isEmpty
+                    ? project.stack.split(' • ')
+                    : project.tags)
+                .map(tr)
+                .join(' • '),
           ),
         ],
       ),
     ),
-    confirmLabel: 'Fechar',
+    confirmLabel: tr('Fechar'),
     showCancelButton: false,
     size: Size(
       screenSize.width < 640 ? screenSize.width * 0.9 : 640,

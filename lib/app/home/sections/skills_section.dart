@@ -4,6 +4,7 @@ import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/models/skill_category.dart';
 import 'package:kainato_portfolio/widgets/base/section_tile.dart';
 import 'package:kainato_portfolio/widgets/base/skill_chip.dart';
+import '../../../core/localization/app_language.dart';
 
 /// Apresenta as categorias de habilidades e suas tecnologias.
 ///
@@ -112,14 +113,14 @@ class _SkillCategoryCardState extends State<_SkillCategoryCard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              category.name,
+                              tr(category.name),
                               style: context.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              category.description,
+                              tr(category.description),
                               style: context.bodySmall?.copyWith(
                                 color: context.onSurfaceVariantColor,
                               ),

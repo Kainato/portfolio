@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kainato_portfolio/core/localization/app_language.dart';
 import 'package:kainato_portfolio/core/routes/kp_routes.dart';
 import 'package:kainato_portfolio/core/theme/app_theme.dart';
 import 'package:kainato_portfolio/core/theme/theme_mode_controller.dart';
@@ -22,20 +23,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-    animation: ThemeModeController.instance,
+    animation: Listenable.merge([
+      ThemeModeController.instance,
+      AppLanguageController.instance,
+    ]),
     builder: (context, _) => MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Caio Calado — Flutter Developer',
+      title: 'Caio Calado — Desenvolvedor Flutter',
       routes: allAppRoutes,
       initialRoute: KpRoutes.home.path,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeModeController.instance.mode,
-      home: const HomePage(),
+      home: HomePage(),
       // Deep links desconhecidos caem de volta na Home em vez de uma tela de erro.
       onUnknownRoute: (settings) =>
-          MaterialPageRoute(builder: (_) => const HomePage()),
+          MaterialPageRoute(builder: (_) => HomePage()),
     ),
   );
-
 }
