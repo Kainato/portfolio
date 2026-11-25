@@ -77,7 +77,7 @@ class HeroSection extends StatelessWidget {
               label: tr('Ver mais e ir para a seção de projetos'),
               child: FilledButton(
                 onPressed: onProjectsTap,
-                child: const Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(tr('Ver projetos')),
@@ -241,21 +241,21 @@ class _ImpactHighlights extends StatelessWidget {
         children: [
           SizedBox(
             width: itemWidth,
-            child: const _ImpactHighlight(
+            child: _ImpactHighlight(
               value: '6+',
               label: tr('anos com Flutter'),
             ),
           ),
           SizedBox(
             width: itemWidth,
-            child: const _ImpactHighlight(
+            child: _ImpactHighlight(
               value: '10+',
               label: tr('redes atendidas'),
             ),
           ),
           SizedBox(
             width: itemWidth,
-            child: const _ImpactHighlight(
+            child: _ImpactHighlight(
               value: '3',
               label: tr('sistemas unificados'),
             ),
