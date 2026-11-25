@@ -169,6 +169,8 @@ const Map<String, String> _english = {
   'Tema atual: ': 'Current theme: ',
   'Ok': 'OK',
   'Digitalização de processos': 'Process digitization',
+  'Algoritmos': 'Algorithms',
+  'Estruturas de dados': 'Data structures',
   'Nov/2024 – Mai/2026': 'Nov 2024 – May 2026',
   'Fev/2020 – Nov/2024': 'Feb 2020 – Nov 2024',
 };
