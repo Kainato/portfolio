@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../app/home/home_page.dart';
+import '../../app/sao/sao_page.dart';
 
 /// Rotas nomeadas disponíveis no aplicativo.
-enum KpRoutes { home }
+enum KpRoutes { home, sao }
 
 /// Fornece nome, caminho, ícone e construtor para uma rota do aplicativo.
 extension KpRoutesExtension on KpRoutes {
@@ -11,6 +12,8 @@ extension KpRoutesExtension on KpRoutes {
     switch (this) {
       case KpRoutes.home:
         return 'Home';
+      case KpRoutes.sao:
+        return 'Modo SAO';
     }
   }
 
@@ -18,6 +21,8 @@ extension KpRoutesExtension on KpRoutes {
     switch (this) {
       case KpRoutes.home:
         return '/';
+      case KpRoutes.sao:
+        return '/sao';
     }
   }
 
@@ -25,6 +30,8 @@ extension KpRoutesExtension on KpRoutes {
     switch (this) {
       case KpRoutes.home:
         return Icons.home_outlined;
+      case KpRoutes.sao:
+        return Icons.gamepad_outlined;
     }
   }
 
@@ -32,6 +39,8 @@ extension KpRoutesExtension on KpRoutes {
     switch (this) {
       case KpRoutes.home:
         return (context) => HomePage();
+      case KpRoutes.sao:
+        return (context) => const SaoPage();
     }
   }
 }

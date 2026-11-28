@@ -338,11 +338,11 @@ abstract final class PortfolioData {
       description:
           'Aplicação web responsiva desenvolvida para centralizar o histórico profissional, os '
           'projetos e seus resultados, com publicação contínua via GitHub Pages.',
-      url: 'https://github.com/Kainato/kainato_portfolio',
+      url: 'https://github.com/Kainato/portfolio',
     ),
   ];
 
-  // Dados de exemplo — substituir pelos certificados reais assim que disponíveis.
+  // TODO(caio): substituir por certificados reais.
   static const List<Certificate> certificates = [
     Certificate(
       title: 'Flutter & Dart — Arquitetura e Boas Práticas',

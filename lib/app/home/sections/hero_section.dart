@@ -4,6 +4,7 @@ import 'package:kainato_portfolio/core/data/portfolio_data.dart';
 import 'package:kainato_portfolio/core/enum/assets.dart';
 import 'package:kainato_portfolio/core/extension/context_extension.dart';
 import 'package:kainato_portfolio/core/utils/kp_launcher.dart';
+import 'package:kainato_portfolio/core/routes/kp_routes.dart';
 import 'package:kainato_portfolio/widgets/base/kp_fallback_image.dart';
 
 import '../../../core/localization/app_language.dart';
@@ -88,6 +89,16 @@ class HeroSection extends StatelessWidget {
                     Icon(Icons.expand_more_rounded, size: 20),
                   ],
                 ),
+              ),
+            ),
+            Semantics(
+              button: true,
+              label: 'Abrir o modo SAO do portfólio',
+              child: OutlinedButton.icon(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(KpRoutes.sao.path),
+                icon: const Icon(Icons.bolt_rounded, size: 18),
+                label: const Text('LINK START'),
               ),
             ),
             Semantics(

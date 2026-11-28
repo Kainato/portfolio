@@ -18,6 +18,9 @@
 
     <meta charset="UTF-8" />
     <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eaf3fb" />
+    <meta name="title" content="Caio Calado — Desenvolvedor Flutter" />
     <meta
       name="description"
       content="Portfólio de Caio Calado, desenvolvedor Flutter sênior especializado em aplicativos mobile e web."
@@ -31,8 +34,20 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://kainato.github.io/portfolio/" />
+    <meta property="og:site_name" content="Portfólio · Caio Calado" />
     <meta
       property="og:image"
+      content="https://kainato.github.io/portfolio/kainato-logo.svg"
+    />
+    <meta property="og:image:alt" content="Símbolo do portfólio de Caio Calado" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Caio Calado — Desenvolvedor Flutter" />
+    <meta
+      name="twitter:description"
+      content="Portfólio de produtos mobile e web em Flutter, arquitetura, integrações REST e experiência de usuário."
+    />
+    <meta
+      name="twitter:image"
       content="https://kainato.github.io/portfolio/kainato-logo.svg"
     />
 
@@ -49,6 +64,111 @@
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
+    <style>
+      #app-loading {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: radial-gradient(ellipse at center, #fff 0%, #e4effa 48%, #bcd6ee 100%);
+        color: #203447;
+        font-family: "Segoe UI", Arial, sans-serif;
+        transition: opacity 400ms ease;
+      }
+      #app-loading.is-ready {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loading-content {
+        position: relative;
+        display: grid;
+        justify-items: center;
+        gap: 20px;
+        padding: 32px;
+        text-align: center;
+      }
+      .loading-rings,
+      .loading-rings::before,
+      .loading-rings::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: min(72vw, 440px);
+        aspect-ratio: 1;
+        border: 1px solid rgba(42, 132, 191, 0.2);
+        border-radius: 50%;
+        content: "";
+        transform: translate(-50%, -50%);
+        animation: ring-pulse 3.2s ease-out infinite;
+        pointer-events: none;
+      }
+      .loading-rings::before { animation-delay: 1s; }
+      .loading-rings::after { animation-delay: 2s; }
+      .loading-title {
+        position: relative;
+        margin: 0;
+        font-size: clamp(32px, 7vw, 68px);
+        font-weight: 700;
+        letter-spacing: 0.16em;
+      }
+      .loading-title span { color: #ed8b25; }
+      .loading-caption {
+        position: relative;
+        margin: 0;
+        color: #5c7182;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .loading-track {
+        position: relative;
+        width: min(220px, 60vw);
+        height: 3px;
+        overflow: hidden;
+        background: rgba(35, 105, 157, 0.15);
+      }
+      .loading-track::after {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, #3d9bd4, #ed8b25);
+        content: "";
+        transform: translateX(-100%);
+        animation: loading-progress 1.8s ease-in-out infinite;
+      }
+      @keyframes ring-pulse {
+        from { opacity: 0.65; scale: 0.35; }
+        to { opacity: 0; scale: 1.15; }
+      }
+      @keyframes loading-progress {
+        to { transform: translateX(100%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #app-loading { transition: none; }
+        .loading-rings,
+        .loading-rings::before,
+        .loading-rings::after,
+        .loading-track::after { animation: none; }
+        .loading-track::after { transform: translateX(0); }
+      }
+    </style>
+    <div id="app-loading" role="status" aria-live="polite" aria-label="Carregando portfólio">
+      <div class="loading-content">
+        <div class="loading-rings" aria-hidden="true"></div>
+        <h1 class="loading-title">LINK <span>START</span></h1>
+        <p class="loading-caption">Carregando o portfólio de Caio Calado</p>
+        <div class="loading-track" aria-hidden="true"></div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('flutter-first-frame', function () {
+        var loading = document.getElementById('app-loading');
+        if (!loading) return;
+        loading.classList.add('is-ready');
+        window.setTimeout(function () { loading.remove(); }, 450);
+      });
+    </script>
     <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
