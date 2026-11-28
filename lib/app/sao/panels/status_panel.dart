@@ -11,6 +11,7 @@ class StatusPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final narrow = MediaQuery.sizeOf(context).width < 420;
     final totalSkills = PortfolioData.skillsCategories.fold<int>(
       0,
       (sum, c) => sum + c.skills.length,
@@ -33,11 +34,15 @@ class StatusPanel extends StatelessWidget {
             color: SaoColors.orangeSoft,
             borderRadius: BorderRadius.circular(999),
           ),
-          child: Text(
-            '◆ CLASSE: ${PortfolioData.role.toUpperCase()}',
-            style: SaoText.mono.copyWith(
-              fontSize: 12,
-              color: SaoColors.orangeText,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              '◆ CLASSE: ${PortfolioData.role.toUpperCase()}',
+              style: SaoText.mono.copyWith(
+                fontSize: 12,
+                color: SaoColors.orangeText,
+              ),
             ),
           ),
         ),
@@ -78,34 +83,64 @@ class StatusPanel extends StatelessWidget {
         for (final (name, value) in SaoData.attributes)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 130,
-                  child: Text(
-                    name,
-                    style: SaoText.body.copyWith(
-                      fontSize: 13,
-                      color: SaoColors.ink,
-                    ),
+            child: narrow
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              name,
+                              style: SaoText.body.copyWith(
+                                fontSize: 13,
+                                color: SaoColors.ink,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            '$value',
+                            textAlign: TextAlign.right,
+                            style: SaoText.mono.copyWith(color: SaoColors.ink2),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                      SaoBar(
+                        value: value / 100,
+                        colors: const [SaoColors.blue, SaoColors.cyan],
+                      ),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      SizedBox(
+                        width: 130,
+                        child: Text(
+                          name,
+                          style: SaoText.body.copyWith(
+                            fontSize: 13,
+                            color: SaoColors.ink,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: SaoBar(
+                          value: value / 100,
+                          colors: const [SaoColors.blue, SaoColors.cyan],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 36,
+                        child: Text(
+                          '$value',
+                          textAlign: TextAlign.right,
+                          style: SaoText.mono.copyWith(color: SaoColors.ink2),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Expanded(
-                  child: SaoBar(
-                    value: value / 100,
-                    colors: const [SaoColors.blue, SaoColors.cyan],
-                  ),
-                ),
-                SizedBox(
-                  width: 36,
-                  child: Text(
-                    '$value',
-                    textAlign: TextAlign.right,
-                    style: SaoText.mono.copyWith(color: SaoColors.ink2),
-                  ),
-                ),
-              ],
-            ),
           ),
         const SaoNote(
           'Atributos e níveis de skill são valores de exemplo, definidos em sao_data.dart.',

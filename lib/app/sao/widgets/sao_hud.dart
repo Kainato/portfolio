@@ -7,7 +7,9 @@ import 'sao_widgets.dart';
 
 /// Janela de status fixa no canto superior esquerdo: avatar, nome, nível, HP e EXP.
 class SaoHud extends StatelessWidget {
-  const SaoHud({super.key});
+  const SaoHud({super.key, this.compact = false});
+
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +25,14 @@ class SaoHud extends StatelessWidget {
       label: 'Status do jogador: ${PortfolioData.name}, nível $level',
       child: SaoGlass(
         borderRadius: BorderRadius.circular(14),
-        padding: const EdgeInsets.fromLTRB(12, 12, 16, 12),
+        padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
         child: SizedBox(
-          width: 300,
+          width: compact ? 272 : 300,
           child: Row(
             children: [
               Container(
-                width: 52,
-                height: 52,
+                width: compact ? 46 : 52,
+                height: compact ? 46 : 52,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -46,12 +48,12 @@ class SaoHud extends StatelessWidget {
                   initials,
                   style: SaoText.display.copyWith(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: compact ? 17 : 20,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-              const SizedBox(width: 14),
+              SizedBox(width: compact ? 10 : 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,23 +61,30 @@ class SaoHud extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          PortfolioData.name,
-                          style: SaoText.display.copyWith(fontSize: 16),
+                        Expanded(
+                          child: Text(
+                            PortfolioData.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: SaoText.display.copyWith(
+                              fontSize: compact ? 14 : 16,
+                            ),
+                          ),
                         ),
+                        const SizedBox(width: 8),
                         Text.rich(
                           TextSpan(
                             text: 'LV ',
                             style: SaoText.mono.copyWith(
-                              fontSize: 12,
+                              fontSize: compact ? 11 : 12,
                               color: SaoColors.ink2,
                             ),
                             children: [
                               TextSpan(
                                 text: '$level',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   color: SaoColors.orange,
-                                  fontSize: 14,
+                                  fontSize: compact ? 13 : 14,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -84,13 +93,13 @@ class SaoHud extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6),
+                    SizedBox(height: compact ? 5 : 6),
                     const SaoBar(
                       value: 1,
                       colors: [SaoColors.green, SaoColors.greenLight],
                     ),
                     _label('HP · Disponível para propostas', '100/100'),
-                    const SizedBox(height: 4),
+                    SizedBox(height: compact ? 3 : 4),
                     SaoBar(
                       value: exp,
                       colors: const [SaoColors.orange, SaoColors.orangeLight],
@@ -110,13 +119,21 @@ class SaoHud extends StatelessWidget {
   }
 
   Widget _label(String left, String right) {
-    final style = SaoText.mono.copyWith(fontSize: 10.5);
+    final style = SaoText.mono.copyWith(fontSize: compact ? 9.8 : 10.5);
     return Padding(
-      padding: const EdgeInsets.only(top: 3),
+      padding: EdgeInsets.only(top: compact ? 2.5 : 3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(left, style: style),
+          Expanded(
+            child: Text(
+              left,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: style,
+            ),
+          ),
+          const SizedBox(width: 8),
           Text(right, style: style),
         ],
       ),
