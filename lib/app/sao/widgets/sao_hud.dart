@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/data/portfolio_data.dart';
+import 'package:kainato_portfolio/core/localization/app_language.dart';
 
 import '../sao_data.dart';
 import '../sao_theme.dart';
@@ -47,7 +48,7 @@ class SaoHud extends StatelessWidget {
                 child: Text(
                   initials,
                   style: SaoText.display.copyWith(
-                    color: Colors.white,
+                    color: SaoColors.ink,
                     fontSize: compact ? 17 : 20,
                     fontWeight: FontWeight.w700,
                   ),
@@ -72,23 +73,34 @@ class SaoHud extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Text.rich(
-                          TextSpan(
-                            text: 'LV ',
-                            style: SaoText.mono.copyWith(
-                              fontSize: compact ? 11 : 12,
-                              color: SaoColors.ink2,
+                        Tooltip(
+                          triggerMode: TooltipTriggerMode.tap,
+                          message: tr(
+                            'Nível = anos de carreira desde Fev/2020.',
+                          ),
+                          child: Semantics(
+                            label: tr(
+                              'Nível = anos de carreira desde Fev/2020.',
                             ),
-                            children: [
+                            child: Text.rich(
                               TextSpan(
-                                text: '$level',
-                                style: TextStyle(
-                                  color: SaoColors.orange,
-                                  fontSize: compact ? 13 : 14,
-                                  fontWeight: FontWeight.w700,
+                                text: 'LV ',
+                                style: SaoText.mono.copyWith(
+                                  fontSize: compact ? 11 : 12,
+                                  color: SaoColors.ink2,
                                 ),
+                                children: [
+                                  TextSpan(
+                                    text: '$level',
+                                    style: TextStyle(
+                                      color: SaoColors.orange,
+                                      fontSize: compact ? 13 : 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ],
@@ -98,7 +110,13 @@ class SaoHud extends StatelessWidget {
                       value: 1,
                       colors: [SaoColors.green, SaoColors.greenLight],
                     ),
-                    _label('HP · Disponível para propostas', '100/100'),
+                    _label(
+                      'HP · Disponível para propostas',
+                      '100/100',
+                      tooltip: tr(
+                        'Disponibilidade para novas propostas. 100/100 = disponível agora.',
+                      ),
+                    ),
                     SizedBox(height: compact ? 3 : 4),
                     SaoBar(
                       value: exp,
@@ -107,6 +125,9 @@ class SaoHud extends StatelessWidget {
                     _label(
                       'EXP até o LV ${level + 1}',
                       '${(exp * 100).round()}%',
+                      tooltip: tr(
+                        'Progresso até completar mais um ano de experiência. Cada ano de carreira = 1 nível.',
+                      ),
                     ),
                   ],
                 ),
@@ -118,24 +139,31 @@ class SaoHud extends StatelessWidget {
     );
   }
 
-  Widget _label(String left, String right) {
+  Widget _label(String left, String right, {required String tooltip}) {
     final style = SaoText.mono.copyWith(fontSize: compact ? 9.8 : 10.5);
-    return Padding(
-      padding: EdgeInsets.only(top: compact ? 2.5 : 3),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              left,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: style,
-            ),
+    return Tooltip(
+      triggerMode: TooltipTriggerMode.tap,
+      message: tooltip,
+      child: Semantics(
+        label: tooltip,
+        child: Padding(
+          padding: EdgeInsets.only(top: compact ? 2.5 : 3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  left,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: style,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(right, style: style),
+            ],
           ),
-          const SizedBox(width: 8),
-          Text(right, style: style),
-        ],
+        ),
       ),
     );
   }

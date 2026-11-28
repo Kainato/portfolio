@@ -65,12 +65,18 @@ class _ScrollRevealState extends State<ScrollReveal> {
 
   @override
   Widget build(BuildContext context) => AnimatedSlide(
-    offset: _isVisible ? Offset.zero : const Offset(0, 0.08),
-    duration: const Duration(milliseconds: 650),
+    offset: MediaQuery.disableAnimationsOf(context) || _isVisible
+        ? Offset.zero
+        : const Offset(0, 0.04),
+    duration: MediaQuery.disableAnimationsOf(context)
+        ? Duration.zero
+        : const Duration(milliseconds: 350),
     curve: Curves.easeOutCubic,
     child: AnimatedOpacity(
       opacity: _isVisible ? 1 : 0,
-      duration: const Duration(milliseconds: 650),
+      duration: MediaQuery.disableAnimationsOf(context)
+          ? Duration.zero
+          : const Duration(milliseconds: 350),
       curve: Curves.easeOutCubic,
       child: widget.child,
     ),

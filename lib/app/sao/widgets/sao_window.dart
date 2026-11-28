@@ -34,7 +34,7 @@ class SaoWindow extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Colors.white, Color(0x66FFFFFF)],
+                colors: [SaoColors.panel, SaoColors.panel],
               ),
               border: Border(bottom: BorderSide(color: SaoColors.line)),
             ),

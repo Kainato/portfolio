@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+  <head>
+    <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+    <!-- <base href="/portfolio/"> -->
+
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0A0B0D" />
+    <meta name="title" content="Caio Calado — Desenvolvedor Flutter" />
+    <meta
+      name="description"
+      content="Caio Calado, Desenvolvedor Flutter Sênior. Experiência com produtos mobile e web, integração REST, digitalização de processos e aplicativos para redes de clínicas."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Caio Calado — Desenvolvedor Flutter" />
+    <meta
+      property="og:description"
+      content="Projetos, experiência profissional e skills de Caio Calado em Flutter, mobile, web, integração REST e produtos para redes de clínicas."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kainato.github.io/portfolio/" />
+    <meta property="og:site_name" content="Portfólio · Caio Calado" />
+    <meta
+      property="og:image"
+      content="https://kainato.github.io/portfolio/og-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Prévia do portfólio de Caio Calado, Desenvolvedor Flutter Sênior" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Caio Calado — Desenvolvedor Flutter" />
+    <meta
+      name="twitter:description"
+      content="Projetos, experiência profissional e skills de Caio Calado em Flutter, mobile, web, integração REST e produtos para redes de clínicas."
+    />
+    <meta
+      name="twitter:image"
+      content="https://kainato.github.io/portfolio/og-preview.png"
+    />
+
+    <!-- iOS meta tags & icons -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Caio Calado" />
+    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="kainato-logo.svg" />
+
+    <title>Caio Calado — Desenvolvedor Flutter</title>
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <style>
+      #app-loading {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: radial-gradient(ellipse at center, #2a2f37 0%, #15181d 48%, #0a0b0d 100%);
+        color: #d7dce2;
+        font-family: "Segoe UI", Arial, sans-serif;
+        transition: opacity 400ms ease;
+      }
+      #app-loading.is-ready {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loading-content {
+        position: relative;
+        display: grid;
+        justify-items: center;
+        gap: 20px;
+        padding: 32px;
+        text-align: center;
+      }
+      .loading-rings,
+      .loading-rings::before,
+      .loading-rings::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: min(72vw, 440px);
+        aspect-ratio: 1;
+        border: 1px solid rgba(134, 225, 212, 0.2);
+        border-radius: 50%;
+        content: "";
+        transform: translate(-50%, -50%);
+        animation: ring-pulse 3.2s ease-out infinite;
+        pointer-events: none;
+      }
+      .loading-rings::before { animation-delay: 1s; }
+      .loading-rings::after { animation-delay: 2s; }
+      .loading-title {
+        position: relative;
+        margin: 0;
+        font-size: clamp(32px, 7vw, 68px);
+        font-weight: 700;
+        letter-spacing: 0.16em;
+      }
+      .loading-title span { color: #86e1d4; }
+      .loading-caption {
+        position: relative;
+        margin: 0;
+        color: #a9b1bc;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .loading-track {
+        position: relative;
+        width: min(220px, 60vw);
+        height: 3px;
+        overflow: hidden;
+        background: rgba(134, 225, 212, 0.15);
+      }
+      .loading-track::after {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, #86e1d4, #f2c14e);
+        content: "";
+        transform: translateX(-100%);
+        animation: loading-progress 1.8s ease-in-out infinite;
+      }
+      @keyframes ring-pulse {
+        from { opacity: 0.65; scale: 0.35; }
+        to { opacity: 0; scale: 1.15; }
+      }
+      @keyframes loading-progress {
+        to { transform: translateX(100%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #app-loading { transition: none; }
+        .loading-rings,
+        .loading-rings::before,
+        .loading-rings::after,
+        .loading-track::after { animation: none; }
+        .loading-track::after { transform: translateX(0); }
+      }
+    </style>
+    <div id="app-loading" role="status" aria-live="polite" aria-label="Carregando portfólio">
+      <div class="loading-content">
+        <div class="loading-rings" aria-hidden="true"></div>
+        <h1 class="loading-title">LINK <span>START</span></h1>
+        <p class="loading-caption">Portfólio de Caio Calado · Desenvolvedor Flutter Sênior</p>
+        <p class="loading-caption">Produtos mobile e web · Projetos profissionais e autorais</p>
+        <div class="loading-track" aria-hidden="true"></div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('flutter-first-frame', function () {
+        var loading = document.getElementById('app-loading');
+        if (!loading) return;
+        loading.classList.add('is-ready');
+        window.setTimeout(function () { loading.remove(); }, 450);
+      });
+    </script>
+    <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+    <script src="flutter_bootstrap.js" async></script>
+  </body>
+</html>

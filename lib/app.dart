@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/localization/app_language.dart';
-import 'package:kainato_portfolio/core/routes/kp_routes.dart';
+import 'package:kainato_portfolio/core/routes/app_router.dart';
 import 'package:kainato_portfolio/core/theme/app_theme.dart';
-import 'package:kainato_portfolio/core/theme/theme_mode_controller.dart';
-
-import 'app/home/home_page.dart';
 
 /// O *[MainApp]* é um widget sem estado que representa a aplicação Flutter.
-/// Ele define o título do aplicativo, as rotas disponíveis, a rota inicial e o tema do aplicativo.
-/// A página inicial é definida como *[HomePage]*.
+/// Define o roteador e o tema compartilhado do aplicativo.
 ///
 /// Parâmetros: este widget não recebe parâmetros além da chave padrão do Flutter.
 ///
@@ -23,22 +19,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-    animation: Listenable.merge([
-      ThemeModeController.instance,
-      AppLanguageController.instance,
-    ]),
-    builder: (context, _) => MaterialApp(
+    animation: AppLanguageController.instance,
+    builder: (context, _) => MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Caio Calado — Desenvolvedor Flutter',
-      routes: allAppRoutes,
-      initialRoute: KpRoutes.home.path,
-      theme: AppTheme.light,
+      routerConfig: appRouter,
+      theme: AppTheme.dark,
       darkTheme: AppTheme.dark,
-      themeMode: ThemeModeController.instance.mode,
-      home: HomePage(),
-      // Deep links desconhecidos caem de volta na Home em vez de uma tela de erro.
-      onUnknownRoute: (settings) =>
-          MaterialPageRoute(builder: (_) => HomePage()),
+      themeMode: ThemeMode.dark,
     ),
   );
 }

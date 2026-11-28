@@ -56,7 +56,7 @@ class AchievementsPanel extends StatelessWidget {
                       medal: const Icon(
                         Icons.workspace_premium_rounded,
                         size: 20,
-                        color: Colors.white,
+                        color: SaoColors.skyTop,
                       ),
                       title: certificate.title,
                       description:
@@ -112,7 +112,7 @@ class _Achievement extends StatelessWidget {
                   ? null
                   : const RadialGradient(
                       center: Alignment(-0.3, -0.4),
-                      colors: [Color(0xFFFFE4A8), SaoColors.orange],
+                      colors: [SaoColors.orange, SaoColors.orange],
                     ),
             ),
             child: medal,

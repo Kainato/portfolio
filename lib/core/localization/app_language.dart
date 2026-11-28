@@ -33,6 +33,32 @@ String tr(String source) => AppLanguageController.instance.isEnglish
     : source;
 
 const Map<String, String> _english = {
+  'Skills': 'Skills',
+  'Explore o portfólio em uma interface interativa inspirada em RPG.':
+      'Explore the portfolio through an interactive RPG-inspired interface.',
+  'Experiência de trabalho': 'Professional experience',
+  'Produtos e entregas desenvolvidos em contextos profissionais.':
+      'Products and work delivered in professional settings.',
+  'Laboratório de programação': 'Programming lab',
+  'Projetos próprios para estudo, experimentação e compartilhamento.':
+      'Personal projects for study, experimentation, and sharing.',
+  'Copiar e-mail': 'Copy email',
+  'E-mail copiado para a área de transferência.': 'Email copied to clipboard.',
+  'Voltar à página anterior': 'Go back to the previous page',
+  'Voltar': 'Back',
+  'Imagens do projeto serão adicionadas aqui.':
+      'Project images will be added here.',
+  'Abrir link externo': 'Open external link',
+  'Não foi possível carregar os detalhes deste projeto.':
+      'Could not load this project’s details.',
+  'Voltar ao portfólio': 'Back to portfolio',
+  'E-mail': 'Email',
+  'Nível = anos de carreira desde Fev/2020.':
+      'Level = years in the career since Feb/2020.',
+  'Disponibilidade para novas propostas. 100/100 = disponível agora.':
+      'Availability for new opportunities. 100/100 = available now.',
+  'Progresso até completar mais um ano de experiência. Cada ano de carreira = 1 nível.':
+      'Progress until another year of experience. Each career year = 1 level.',
   'Sobre': 'About',
   'Habilidades': 'Skills',
   'Projetos': 'Projects',

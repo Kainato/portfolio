@@ -138,7 +138,7 @@ class _Floor extends StatelessWidget {
             height: 20,
             margin: const EdgeInsets.only(top: 14, right: 8),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: SaoColors.panel,
               shape: BoxShape.circle,
               border: Border.all(
                 color: pending ? SaoColors.ink3 : SaoColors.orange,

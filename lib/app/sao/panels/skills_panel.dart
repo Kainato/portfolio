@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kainato_portfolio/core/data/portfolio_data.dart';
+import 'package:kainato_portfolio/core/audio/sound_service.dart';
 
 import '../sao_data.dart';
 import '../sao_theme.dart';
@@ -53,10 +54,13 @@ class SkillsPanel extends StatelessWidget {
                         name: skill.name,
                         color: skill.color,
                         level: SaoData.skillLevels[skill.name] ?? 3,
-                        onTap: () => toasts.show(
-                          'Skill equipada',
-                          '${skill.name} · nível ${SaoData.skillLevels[skill.name] ?? 3}',
-                        ),
+                        onTap: () {
+                          SoundService.instance.play(SoundEffect.select);
+                          toasts.show(
+                            'Skill equipada',
+                            '${skill.name} · nível ${SaoData.skillLevels[skill.name] ?? 3}',
+                          );
+                        },
                       ),
                   ],
                 ),
@@ -103,7 +107,7 @@ class _SkillNode extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: color,
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
+                  border: Border.all(color: SaoColors.ink, width: 2),
                   boxShadow: const [
                     BoxShadow(color: SaoColors.line, spreadRadius: 1),
                   ],

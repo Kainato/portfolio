@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kainato_portfolio/core/audio/sound_service.dart';
 
 import '../sao_theme.dart';
 
@@ -20,6 +21,7 @@ class SaoToastController extends ChangeNotifier {
   List<SaoToast> get items => List.unmodifiable(_items);
 
   void show(String title, String message) {
+    SoundService.instance.play(SoundEffect.toast);
     final toast = SaoToast(_nextId++, title, message);
     _items.add(toast);
     notifyListeners();
@@ -84,7 +86,7 @@ class _ToastTile extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: SaoColors.panel,
           borderRadius: BorderRadius.circular(10),
           border: const Border(
             left: BorderSide(color: SaoColors.orange, width: 4),

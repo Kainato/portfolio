@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kainato_portfolio/core/data/portfolio_data.dart';
 
 import '../sao_data.dart';
 import '../sao_theme.dart';
@@ -30,7 +31,7 @@ class _SaoBootOverlayState extends State<SaoBootOverlay> {
     ('Hearing', 'OK'),
     ('Language', 'PT-BR'),
     ('Carregando', 'LV ${SaoData.level}'),
-    ('Bem-vindo a', 'Aincrad Dev'),
+    ('Bem-vindo,', PortfolioData.name),
   ];
   int _visibleLines = 0;
   bool _revealStarted = false;
@@ -69,7 +70,11 @@ class _SaoBootOverlayState extends State<SaoBootOverlay> {
       decoration: const BoxDecoration(
         gradient: RadialGradient(
           radius: 1.1,
-          colors: [Colors.white, Color(0xFFE4EFFA), Color(0xFFBCD6EE)],
+          colors: [
+            SaoColors.surface,
+            SaoColors.background,
+            SaoColors.background,
+          ],
           stops: [0, 0.45, 1],
         ),
       ),

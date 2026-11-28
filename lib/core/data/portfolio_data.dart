@@ -282,6 +282,8 @@ abstract final class PortfolioData {
 
   static const List<PortfolioProject> projects = [
     PortfolioProject(
+      slug: 'teatec',
+      category: ProjectCategory.work,
       order: '01',
       title: 'Teatec — Amigo Tech & Clínica Mundos',
       subtitle:
@@ -303,6 +305,8 @@ abstract final class PortfolioData {
           'A centralização acelerou a geração de relatórios e métricas para a Clínica Mundos.',
     ),
     PortfolioProject(
+      slug: 'app-corporativo',
+      category: ProjectCategory.work,
       order: '02',
       title: 'App Corporativo — Clínica Mundos',
       subtitle: 'Aplicativo mobile das filiais integrado à plataforma Teatech.',
@@ -313,6 +317,8 @@ abstract final class PortfolioData {
           'APIs REST, com GetX para gerenciamento de estado e navegação.',
     ),
     PortfolioProject(
+      slug: 'tita-therapy',
+      category: ProjectCategory.work,
       order: '03',
       title: 'TiTa Therapy',
       subtitle: 'Plataforma cross-platform para redes de clínicas de terapia.',
@@ -333,6 +339,8 @@ abstract final class PortfolioData {
           'A plataforma atendia mais de 10 redes de clínicas e suas filiais.',
     ),
     PortfolioProject(
+      slug: 'dart-lab',
+      category: ProjectCategory.lab,
       order: '04',
       title: 'Dart Lab',
       subtitle:
@@ -344,6 +352,8 @@ abstract final class PortfolioData {
       url: 'https://github.com/Kainato/dart_lab',
     ),
     PortfolioProject(
+      slug: 'bibliotech',
+      category: ProjectCategory.lab,
       order: '05',
       title: 'Bibliotech',
       subtitle:
@@ -355,6 +365,8 @@ abstract final class PortfolioData {
       url: 'https://bibliotech-three.vercel.app/',
     ),
     PortfolioProject(
+      slug: 'portfolio',
+      category: ProjectCategory.lab,
       order: '06',
       title: 'Este portfólio',
       subtitle:
@@ -367,7 +379,7 @@ abstract final class PortfolioData {
     ),
   ];
 
-  // TODO(caio): substituir por certificados reais.
+  // TODO(caio): substituir por certificados reais
   static const List<Certificate> certificates = [
     Certificate(
       title: 'Flutter & Dart — Arquitetura e Boas Práticas',

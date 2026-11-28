@@ -1,94 +1,65 @@
 import 'package:flutter/material.dart';
 
-/// Paletas base do aplicativo. Os esquemas de cores são derivados pelo
-/// Material 3 a partir destas cores-semente.
-///
-/// Parâmetros: esta classe utilitária não recebe parâmetros.
+import 'app_colors.dart';
+
+/// Tema central usado no modo clássico, nos detalhes e no modo SAO.
 abstract final class AppTheme {
-  static const Color blueSea = Color(0xFF00C0FE);
-  static const Color darkNight = Color(0xFF0E162C);
-
-  static final ThemeData light = _buildTheme(
-    brightness: Brightness.light,
-    seedColor: blueSea,
+  static final ColorScheme colorScheme = const ColorScheme.dark(
+    primary: AppColors.accent,
+    onPrimary: AppColors.background,
+    secondary: AppColors.highlight,
+    onSecondary: AppColors.background,
+    error: AppColors.error,
+    onError: AppColors.background,
+    surface: AppColors.surface,
+    onSurface: AppColors.textPrimary,
+    surfaceContainerLowest: AppColors.background,
+    surfaceContainerLow: AppColors.surface,
+    surfaceContainer: AppColors.surfaceRaised,
+    surfaceContainerHigh: AppColors.surfaceRaised,
+    surfaceContainerHighest: AppColors.surfaceRaised,
+    outline: AppColors.textSecondary,
+    outlineVariant: Color(0xFF3D444E),
   );
 
-  static final ThemeData dark = _buildTheme(
+  static final ThemeData dark = _build();
+  static final ThemeData light = dark;
+
+  static ThemeData _build() => ThemeData(
+    useMaterial3: true,
     brightness: Brightness.dark,
-    seedColor: darkNight,
+    colorScheme: colorScheme,
+    scaffoldBackgroundColor: AppColors.background,
+    textTheme: ThemeData.dark().textTheme.apply(
+      bodyColor: AppColors.textPrimary,
+      displayColor: AppColors.textPrimary,
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.background,
+      foregroundColor: AppColors.textPrimary,
+      elevation: 0,
+    ),
+    cardTheme: CardThemeData(
+      color: AppColors.surface,
+      elevation: 0,
+      margin: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    ),
+    dividerTheme: const DividerThemeData(color: AppColors.surfaceRaised),
+    focusColor: AppColors.highlight,
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: AppColors.accent,
+        foregroundColor: AppColors.background,
+        enabledMouseCursor: SystemMouseCursors.click,
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.accent,
+        side: const BorderSide(color: AppColors.accent),
+        enabledMouseCursor: SystemMouseCursors.click,
+      ),
+    ),
   );
-
-  static ThemeData _buildTheme({
-    required Brightness brightness,
-    required Color seedColor,
-  }) {
-    final colorScheme = ColorScheme.fromSeed(
-      seedColor: seedColor,
-      brightness: brightness,
-    );
-    final isDark = brightness == Brightness.dark;
-    final baseTextTheme = (isDark ? ThemeData.dark() : ThemeData.light())
-        .textTheme
-        .apply(
-          bodyColor: colorScheme.onSurface,
-          displayColor: colorScheme.onSurface,
-        );
-
-    return ThemeData(
-      useMaterial3: true,
-      brightness: brightness,
-      colorScheme: colorScheme,
-      scaffoldBackgroundColor: colorScheme.surface,
-      textTheme: baseTextTheme,
-      appBarTheme: AppBarTheme(
-        backgroundColor: colorScheme.surface,
-        foregroundColor: colorScheme.onSurface,
-        elevation: 0,
-        centerTitle: false,
-      ),
-      iconButtonTheme: const IconButtonThemeData(
-        style: ButtonStyle(
-          mouseCursor: WidgetStatePropertyAll(SystemMouseCursors.click),
-        ),
-      ),
-      cardTheme: CardThemeData(
-        color: colorScheme.surfaceContainer,
-        elevation: 0,
-        margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      ),
-      drawerTheme: DrawerThemeData(
-        backgroundColor: colorScheme.surfaceContainerLow,
-      ),
-      dividerTheme: DividerThemeData(color: colorScheme.outlineVariant),
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          backgroundColor: colorScheme.primary,
-          foregroundColor: colorScheme.onPrimary,
-          enabledMouseCursor: SystemMouseCursors.click,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: colorScheme.primary,
-          enabledMouseCursor: SystemMouseCursors.click,
-          side: BorderSide(color: colorScheme.outline),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: colorScheme.primary,
-          enabledMouseCursor: SystemMouseCursors.click,
-        ),
-      ),
-    );
-  }
 }

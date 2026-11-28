@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kainato_portfolio/core/data/portfolio_data.dart';
+import 'package:kainato_portfolio/core/audio/sound_service.dart';
+import 'package:kainato_portfolio/widgets/layout/mode_sound_controls.dart';
 
 import 'panels/achievements_panel.dart';
 import 'panels/floors_panel.dart';
@@ -55,6 +58,7 @@ class _SaoPageState extends State<SaoPage> {
 
   void _enter() {
     if (_booted) return;
+    SoundService.instance.play(SoundEffect.linkStart);
     setState(() => _booted = true);
     _toasts.show('Login concluído', 'Bem-vindo, visitante');
     Future.delayed(const Duration(milliseconds: 900), () {
@@ -67,18 +71,25 @@ class _SaoPageState extends State<SaoPage> {
     if (onExit != null) {
       onExit();
     } else {
-      Navigator.of(context).maybePop();
+      context.go('/');
     }
   }
 
   void _open(SaoSection section) {
+    final closing = _current == section;
+    SoundService.instance.play(
+      closing ? SoundEffect.closePanel : SoundEffect.openPanel,
+    );
     setState(() {
       _current = _current == section ? null : section;
       _lastShown = section;
     });
   }
 
-  void _close() => setState(() => _current = null);
+  void _close() {
+    SoundService.instance.play(SoundEffect.closePanel);
+    setState(() => _current = null);
+  }
 
   KeyEventResult _onKey(FocusNode node, KeyEvent event) {
     if (event is! KeyDownEvent) return KeyEventResult.ignored;
@@ -86,6 +97,10 @@ class _SaoPageState extends State<SaoPage> {
     if (!_booted) {
       if (event.logicalKey == LogicalKeyboardKey.enter) {
         _enter();
+        return KeyEventResult.handled;
+      }
+      if (event.logicalKey == LogicalKeyboardKey.keyM) {
+        _exit();
         return KeyEventResult.handled;
       }
       return KeyEventResult.ignored;
@@ -110,7 +125,7 @@ class _SaoPageState extends State<SaoPage> {
     SaoSection.status => const StatusPanel(),
     SaoSection.skills => SkillsPanel(toasts: _toasts),
     SaoSection.floors => const FloorsPanel(),
-    SaoSection.quests => QuestsPanel(toasts: _toasts),
+    SaoSection.quests => const QuestsPanel(),
     SaoSection.achievements => const AchievementsPanel(),
     SaoSection.party => PartyPanel(toasts: _toasts),
   };
@@ -119,10 +134,11 @@ class _SaoPageState extends State<SaoPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     final wide = size.width > 760;
+    final showProfessionalSummary = size.width >= 1280;
     final hudTop = wide ? 22.0 : 12.0;
     final hudLeft = wide ? 24.0 : 12.0;
     final hudHeight = wide ? 104.0 : 92.0;
-    final windowTop = wide ? (hudTop + hudHeight + 14) : 120.0;
+    final windowTop = wide ? (hudTop + hudHeight + 14) : 260.0;
     final windowLeft = wide ? 104.0 : 12.0;
     final current = _current;
     final shown = current ?? _lastShown;
@@ -141,24 +157,65 @@ class _SaoPageState extends State<SaoPage> {
             children: [
               const Positioned.fill(child: SaoBackground()),
 
-              // Título do andar atual
-              if (wide)
+              // Destaques profissionais ficam no topo direito, fora da área do seletor.
+              if (showProfessionalSummary)
                 Positioned(
                   right: size.width * 0.06,
-                  bottom: 96,
+                  top: 390,
+                  width: (size.width * 0.36).clamp(330.0, 520.0),
+                  height: 180,
+                  child: const SaoRightPanel(),
+                ),
+              if (_booted && !wide)
+                Positioned(
+                  left: 14,
+                  right: 14,
+                  top: 164,
+                  child: IgnorePointer(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'LV ${SaoData.level} · ${SaoData.yearsOfExperience.floor()}+ ANOS DE CARREIRA',
+                          style: SaoText.mono.copyWith(color: SaoColors.orange),
+                        ),
+                        Text(
+                          PortfolioData.role,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: SaoText.display.copyWith(fontSize: 16),
+                        ),
+                        Text(
+                          SaoData.milestones
+                              .take(3)
+                              .map((item) => item.title)
+                              .join(' · '),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: SaoText.body.copyWith(fontSize: 11),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              if (showProfessionalSummary)
+                Positioned(
+                  right: size.width * 0.06,
+                  top: 180,
+                  width: (size.width * 0.36).clamp(330.0, 520.0),
                   child: IgnorePointer(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'ANDAR ${SaoData.level.toString().padLeft(2, '0')} · ZONA SEGURA',
+                          'LV ${SaoData.level} · ${SaoData.yearsOfExperience.floor()}+ ANOS DE CARREIRA',
                           style: SaoText.mono.copyWith(
                             fontSize: 12,
                             letterSpacing: 2.4,
                           ),
                         ),
                         Text(
-                          'Aincrad Dev',
+                          PortfolioData.role,
                           style: SaoText.display.copyWith(
                             fontSize: (size.width * 0.04).clamp(28.0, 52.0),
                             color: SaoColors.ink.withValues(alpha: 0.75),
@@ -167,7 +224,13 @@ class _SaoPageState extends State<SaoPage> {
                         SizedBox(
                           width: 420,
                           child: Text(
-                            'Desenvolvedor Flutter Sênior · Mobile & Web. Abra o menu para explorar.',
+                            SaoData.milestones
+                                .take(3)
+                                .map(
+                                  (item) =>
+                                      '${item.title}: ${item.description}',
+                                )
+                                .join(' · '),
                             textAlign: TextAlign.right,
                             style: SaoText.body.copyWith(fontSize: 14),
                           ),
@@ -212,8 +275,13 @@ class _SaoPageState extends State<SaoPage> {
                 left: windowLeft,
                 right: wide ? null : 12,
                 top: windowTop,
-                bottom: wide ? 70 : 170,
-                width: wide ? (size.width - 130).clamp(0.0, 640.0) : null,
+                bottom: wide ? 100 : 182,
+                width: wide
+                    ? (size.width - 130).clamp(
+                        0.0,
+                        showProfessionalSummary ? 620.0 : 640.0,
+                      )
+                    : null,
                 child: IgnorePointer(
                   ignoring: current == null,
                   child: AnimatedOpacity(
@@ -237,7 +305,7 @@ class _SaoPageState extends State<SaoPage> {
                 ),
               ),
 
-              // Atalhos e botão de voltar ao modo clássico
+              // Atalhos de teclado
               if (_booted && wide)
                 Positioned(
                   left: 24,
@@ -247,35 +315,10 @@ class _SaoPageState extends State<SaoPage> {
                     style: SaoText.mono,
                   ),
                 ),
-              if (_booted)
-                Positioned(
-                  right: 22,
-                  bottom: 22,
-                  child: TextButton.icon(
-                    onPressed: _exit,
-                    icon: const Icon(Icons.logout_rounded, size: 16),
-                    label: Text(
-                      'MODO CLÁSSICO',
-                      style: SaoText.display.copyWith(
-                        fontSize: 12.5,
-                        color: Colors.white,
-                      ),
-                    ),
-                    style: TextButton.styleFrom(
-                      backgroundColor: SaoColors.ink,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
-                      shape: const StadiumBorder(),
-                    ),
-                  ),
-                ),
-
               Positioned(
                 right: 22,
-                top: 22,
+                left: wide ? null : 12,
+                top: wide ? 22 : 108,
                 child: SaoToastHost(controller: _toasts),
               ),
 
@@ -303,10 +346,26 @@ class _SaoPageState extends State<SaoPage> {
                     ),
                   ),
                 ),
+
+              const Positioned(
+                right: 16,
+                bottom: 16,
+                child: ModeSoundControls(isSao: true),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class SaoRightPanel extends StatelessWidget {
+  const SaoRightPanel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO(caio): conteúdo do painel direito em discussão
+    return const SizedBox.expand();
   }
 }

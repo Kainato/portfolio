@@ -26,7 +26,7 @@ class SaoGlass extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: borderRadius,
-          border: Border.all(color: Colors.white),
+          border: Border.all(color: SaoColors.line),
         ),
         child: child,
       ),
@@ -55,7 +55,7 @@ class SaoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final radius = BorderRadius.circular(12);
     return Material(
-      color: dashed ? Colors.transparent : Colors.white,
+      color: dashed ? Colors.transparent : SaoColors.panel,
       shape: RoundedRectangleBorder(
         borderRadius: radius,
         side: BorderSide(
@@ -67,7 +67,7 @@ class SaoCard extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: onTap,
-        hoverColor: SaoColors.orangeSoft,
+        hoverColor: SaoColors.blueSoft,
         child: Padding(padding: padding, child: child),
       ),
     );
@@ -211,15 +211,13 @@ class SaoButton extends StatelessWidget {
     final style = SaoText.display.copyWith(
       fontSize: 13,
       letterSpacing: 1.5,
-      color: primary ? Colors.white : SaoColors.ink,
+      color: primary ? SaoColors.skyTop : SaoColors.ink,
     );
     return Semantics(
       button: true,
       label: label,
       child: Material(
-        color: primary
-            ? SaoColors.orange
-            : Colors.white.withValues(alpha: 0.75),
+        color: primary ? SaoColors.orange : SaoColors.panel,
         shape: StadiumBorder(
           side: primary
               ? BorderSide.none

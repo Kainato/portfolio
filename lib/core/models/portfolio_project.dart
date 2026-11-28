@@ -7,7 +7,11 @@
 /// - `stack`: tecnologias usadas no projeto.
 /// - `description`: detalhes do problema e da solução.
 /// - `url`: endereço opcional para abrir o projeto ou case.
+enum ProjectCategory { work, lab }
+
 class PortfolioProject {
+  final String slug;
+  final ProjectCategory category;
   final String order;
   final String title;
   final String subtitle;
@@ -23,6 +27,8 @@ class PortfolioProject {
   final String? impact;
 
   const PortfolioProject({
+    required this.slug,
+    required this.category,
     required this.order,
     required this.title,
     required this.subtitle,

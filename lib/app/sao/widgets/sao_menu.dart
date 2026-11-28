@@ -78,7 +78,7 @@ class _MenuButtonState extends State<_MenuButton> {
     return Tooltip(
       message: '${widget.section.label}  (${widget.shortcut})',
       preferBelow: false,
-      textStyle: SaoText.display.copyWith(color: Colors.white, fontSize: 12),
+      textStyle: SaoText.display.copyWith(color: SaoColors.ink, fontSize: 12),
       decoration: BoxDecoration(
         color: SaoColors.ink,
         borderRadius: BorderRadius.circular(6),
@@ -108,7 +108,7 @@ class _MenuButtonState extends State<_MenuButton> {
                     child: Icon(
                       widget.section.icon,
                       size: widget.compact ? 21 : 24,
-                      color: widget.active ? Colors.white : SaoColors.ink2,
+                      color: widget.active ? SaoColors.skyTop : SaoColors.ink2,
                     ),
                   ),
                 ),

@@ -40,7 +40,11 @@ class PartyPanel extends StatelessWidget {
                       color: _contactColor(contact.type),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(contact.icon, color: Colors.white, size: 19),
+                    child: Icon(
+                      contact.icon,
+                      color: SaoColors.skyTop,
+                      size: 19,
+                    ),
                   ),
                   const SizedBox(width: 14),
                   Expanded(
@@ -78,9 +82,9 @@ class PartyPanel extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [Colors.white, SaoColors.orangeSoft],
+              colors: [SaoColors.panel, SaoColors.orangeSoft],
             ),
-            border: Border.all(color: const Color(0xFFFFD9A3)),
+            border: Border.all(color: SaoColors.orange),
             borderRadius: BorderRadius.circular(14),
           ),
           child: Column(
@@ -115,9 +119,5 @@ class PartyPanel extends StatelessWidget {
 }
 
 Color _contactColor(ContactLinkType type) => switch (type) {
-  ContactLinkType.email => SaoColors.orange,
-  ContactLinkType.linkedin => const Color(0xFF0A66C2),
-  ContactLinkType.github => const Color(0xFF24292F),
-  ContactLinkType.phone => SaoColors.green,
-  ContactLinkType.website => SaoColors.blue,
+  _ => SaoColors.blue,
 };
