@@ -26,7 +26,6 @@ class SaoWindow extends StatelessWidget {
   Widget build(BuildContext context) {
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
     return SaoGlass(
-      shadowBlur: 60,
       child: Column(
         children: [
           Container(

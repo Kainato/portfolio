@@ -10,7 +10,7 @@ import 'sao_widgets.dart';
 /// - [current]: janela aberta no momento (fica destacada em laranja).
 /// - [onSelect]: chamado ao tocar em um botão.
 /// - [vertical]: coluna à esquerda (desktop) ou linha na parte de baixo (mobile).
-class SaoMenu extends StatefulWidget {
+class SaoMenu extends StatelessWidget {
   const SaoMenu({
     super.key,
     required this.current,
@@ -23,84 +23,29 @@ class SaoMenu extends StatefulWidget {
   final bool vertical;
 
   @override
-  State<SaoMenu> createState() => _SaoMenuState();
-}
-
-class _SaoMenuState extends State<SaoMenu> with SingleTickerProviderStateMixin {
-  late final AnimationController _entry = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 700),
-  )..forward();
-
-  @override
-  void dispose() {
-    _entry.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final reduceMotion = MediaQuery.disableAnimationsOf(context);
-    if (reduceMotion && _entry.value != 1) _entry.value = 1;
     final sections = SaoSection.values;
     final buttons = [
       for (var i = 0; i < sections.length; i++)
-        _menuButton(i, sections, reduceMotion),
+        _MenuButton(
+          section: sections[i],
+          shortcut: i + 1,
+          active: current == sections[i],
+          compact: !vertical,
+          onTap: () => onSelect(sections[i]),
+        ),
     ];
-    return widget.vertical
+    return vertical
         ? Column(mainAxisSize: MainAxisSize.min, children: _spaced(buttons))
         : Row(mainAxisSize: MainAxisSize.min, children: _spaced(buttons));
   }
 
-  Widget _menuButton(int index, List<SaoSection> sections, bool reduceMotion) {
-    final button = _MenuButton(
-      section: sections[index],
-      shortcut: index + 1,
-      active: widget.current == sections[index],
-      compact: !widget.vertical,
-      onTap: () => widget.onSelect(sections[index]),
-    );
-    return reduceMotion
-        ? button
-        : _staggered(index: index, total: sections.length, child: button);
-  }
-
   List<Widget> _spaced(List<Widget> children) => [
     for (var i = 0; i < children.length; i++) ...[
-      if (i > 0) SizedBox(width: widget.vertical ? 12 : 6, height: 12),
+      if (i > 0) SizedBox(width: vertical ? 12 : 6, height: 12),
       children[i],
     ],
   ];
-
-  // Cada botão entra deslizando um pouco depois do anterior
-  Widget _staggered({
-    required int index,
-    required int total,
-    required Widget child,
-  }) {
-    final start = index / (total + 2);
-    final animation = CurvedAnimation(
-      parent: _entry,
-      curve: Interval(
-        start,
-        (start + 0.4).clamp(0.0, 1.0),
-        curve: Curves.easeOutCubic,
-      ),
-    );
-    return AnimatedBuilder(
-      animation: animation,
-      builder: (context, child) => Opacity(
-        opacity: animation.value,
-        child: Transform.translate(
-          offset: widget.vertical
-              ? Offset(-20 * (1 - animation.value), 0)
-              : Offset(0, 20 * (1 - animation.value)),
-          child: child,
-        ),
-      ),
-      child: child,
-    );
-  }
 }
 
 class _MenuButton extends StatefulWidget {
@@ -158,7 +103,6 @@ class _MenuButtonState extends State<_MenuButton> {
                 height: size,
                 child: SaoGlass(
                   borderRadius: circle,
-                  shadowBlur: 18,
                   color: widget.active ? SaoColors.orange : SaoColors.panel,
                   child: Center(
                     child: Icon(

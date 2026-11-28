@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../sao_theme.dart';
@@ -12,42 +10,25 @@ class SaoGlass extends StatelessWidget {
     this.borderRadius = const BorderRadius.all(Radius.circular(16)),
     this.padding = EdgeInsets.zero,
     this.color = SaoColors.panel,
-    this.shadowBlur = 30,
   });
 
   final Widget child;
   final BorderRadius borderRadius;
   final EdgeInsetsGeometry padding;
   final Color color;
-  final double shadowBlur;
-
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: borderRadius,
-        boxShadow: [
-          BoxShadow(
-            color: SaoColors.ink.withValues(alpha: 0.12),
-            blurRadius: shadowBlur,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: borderRadius,
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
-          child: Container(
-            padding: padding,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: borderRadius,
-              border: Border.all(color: Colors.white),
-            ),
-            child: child,
-          ),
+    return ClipRRect(
+      borderRadius: borderRadius,
+      clipBehavior: Clip.hardEdge,
+      child: Container(
+        padding: padding,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: borderRadius,
+          border: Border.all(color: Colors.white),
         ),
+        child: child,
       ),
     );
   }
@@ -83,7 +64,7 @@ class SaoCard extends StatelessWidget {
               : SaoColors.line,
         ),
       ),
-      clipBehavior: Clip.antiAlias,
+      clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: onTap,
         hoverColor: SaoColors.orangeSoft,

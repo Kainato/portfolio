@@ -4,7 +4,7 @@ import '../sao_data.dart';
 import '../sao_theme.dart';
 import 'sao_widgets.dart';
 
-/// Tela de abertura "LINK START" com túnel de anéis e checagem de sentidos.
+/// Tela de abertura "LINK START" com anéis estáticos e checagem de sentidos.
 ///
 /// Parâmetros:
 /// - [onEnter]: entra no mundo (modo SAO).
@@ -23,13 +23,7 @@ class SaoBootOverlay extends StatefulWidget {
   State<SaoBootOverlay> createState() => _SaoBootOverlayState();
 }
 
-class _SaoBootOverlayState extends State<SaoBootOverlay>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _tunnel = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 2400),
-  );
-
+class _SaoBootOverlayState extends State<SaoBootOverlay> {
   late final List<(String, String)> _lines = [
     ('Touch', 'OK'),
     ('Sight', 'OK'),
@@ -49,11 +43,6 @@ class _SaoBootOverlayState extends State<SaoBootOverlay>
       _revealStarted = true;
       _revealLines(reduceMotion);
     }
-    if (!reduceMotion && !_tunnel.isAnimating) {
-      _tunnel.repeat();
-    } else if (reduceMotion && _tunnel.isAnimating) {
-      _tunnel.stop();
-    }
   }
 
   Future<void> _revealLines(bool reduceMotion) async {
@@ -67,12 +56,6 @@ class _SaoBootOverlayState extends State<SaoBootOverlay>
       setState(() => _visibleLines = i + 1);
       await Future.delayed(const Duration(milliseconds: 280));
     }
-  }
-
-  @override
-  void dispose() {
-    _tunnel.dispose();
-    super.dispose();
   }
 
   @override
@@ -92,12 +75,8 @@ class _SaoBootOverlayState extends State<SaoBootOverlay>
       ),
       child: Stack(
         children: [
-          Positioned.fill(
-            child: AnimatedBuilder(
-              animation: _tunnel,
-              builder: (context, _) =>
-                  CustomPaint(painter: _TunnelPainter(_tunnel.value)),
-            ),
+          const Positioned.fill(
+            child: CustomPaint(painter: _BootRingsPainter()),
           ),
           Center(
             child: Column(
@@ -116,12 +95,6 @@ class _SaoBootOverlayState extends State<SaoBootOverlay>
                       fontSize: titleSize,
                       fontWeight: FontWeight.w700,
                       letterSpacing: titleSize * 0.35,
-                      shadows: [
-                        Shadow(
-                          color: SaoColors.blue.withValues(alpha: 0.35),
-                          blurRadius: 30,
-                        ),
-                      ],
                     ),
                   ),
                 ),
@@ -187,36 +160,22 @@ class _SaoBootOverlayState extends State<SaoBootOverlay>
   }
 }
 
-class _TunnelPainter extends CustomPainter {
-  const _TunnelPainter(this.progress);
-
-  final double progress;
-  static const int _rings = 14;
-  static const List<Color> _colors = [
-    SaoColors.blue,
-    SaoColors.cyan,
-    SaoColors.orange,
-    Colors.white,
-    Color(0xFF9FD0F5),
-  ];
+class _BootRingsPainter extends CustomPainter {
+  const _BootRingsPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
     final center = size.center(Offset.zero);
-    final maxRadius = size.longestSide * 1.1;
-    for (var i = 0; i < _rings; i++) {
-      final phase = (progress + i / _rings) % 1;
-      final opacity = phase < 0.15 ? phase / 0.15 * 0.9 : (1 - phase) * 0.9;
+    final maxRadius = size.shortestSide * 0.46;
+    for (var i = 1; i <= 4; i++) {
       final paint = Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 2
-        ..color = _colors[i % _colors.length].withValues(
-          alpha: opacity.clamp(0.0, 1.0),
-        );
-      canvas.drawCircle(center, maxRadius * (0.03 + phase), paint);
+        ..strokeWidth = 1
+        ..color = SaoColors.blue.withValues(alpha: 0.13 / i);
+      canvas.drawCircle(center, maxRadius * i / 4, paint);
     }
   }
 
   @override
-  bool shouldRepaint(_TunnelPainter old) => old.progress != progress;
+  bool shouldRepaint(_BootRingsPainter old) => false;
 }

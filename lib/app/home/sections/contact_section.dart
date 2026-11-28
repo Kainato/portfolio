@@ -45,7 +45,7 @@ class ContactSection extends StatelessWidget {
                 spacing: 16,
                 runSpacing: 16,
                 children: [
-                  for (final link in ContactLink.contactLinks)
+                  for (final link in PortfolioData.contacts)
                     _ContactChip(link: link),
                 ],
               ),

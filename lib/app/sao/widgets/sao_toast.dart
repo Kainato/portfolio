@@ -89,13 +89,6 @@ class _ToastTile extends StatelessWidget {
           border: const Border(
             left: BorderSide(color: SaoColors.orange, width: 4),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: SaoColors.ink.withValues(alpha: 0.14),
-              blurRadius: 24,
-              offset: const Offset(0, 10),
-            ),
-          ],
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

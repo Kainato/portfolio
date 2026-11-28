@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kainato_portfolio/core/data/contact_link.dart';
+import 'package:kainato_portfolio/core/data/portfolio_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../sao_theme.dart';
@@ -15,12 +16,12 @@ class PartyPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final email = ContactLink.contactLinks
+    final email = PortfolioData.contacts
         .firstWhere((link) => link.type == ContactLinkType.email)
         .value;
     return Column(
       children: [
-        for (final contact in ContactLink.contactLinks)
+        for (final contact in PortfolioData.contacts)
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: SaoCard(

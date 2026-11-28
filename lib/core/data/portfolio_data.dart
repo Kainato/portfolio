@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'contact_link.dart';
 import '../models/certificate.dart';
 import '../models/experience.dart';
 import '../models/portfolio_project.dart';
@@ -23,6 +24,30 @@ abstract final class PortfolioData {
   static const String heroDescription =
       'Trabalho com Flutter em produtos mobile e web, da arquitetura à interface, '
       'conectando necessidades reais de negócio a experiências claras e confiáveis.';
+
+  static const List<ContactLink> contacts = [
+    ContactLink(
+      type: ContactLinkType.email,
+      label: 'E-mail',
+      value: 'caiocaladaraujo@gmail.com',
+      url: 'mailto:caiocaladaraujo@gmail.com',
+      icon: Icons.email_outlined,
+    ),
+    ContactLink(
+      type: ContactLinkType.linkedin,
+      label: 'LinkedIn',
+      value: 'linkedin.com/in/caio-calado',
+      url: 'https://linkedin.com/in/caio-calado',
+      icon: Icons.business_center_outlined,
+    ),
+    ContactLink(
+      type: ContactLinkType.github,
+      label: 'GitHub',
+      value: 'github.com/Kainato',
+      url: 'https://github.com/Kainato',
+      icon: Icons.code,
+    ),
+  ];
 
   static const List<Skill> skills = [
     Skill(
